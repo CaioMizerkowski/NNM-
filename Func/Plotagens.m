@@ -1,4 +1,5 @@
 function[] = Plotagens
+%%%%%
     load('Dados.mat','Dados_Saida');
     load('Saida');
     Saida_c = Saida_r + 1i*Saida_j;
