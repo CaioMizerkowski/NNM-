@@ -1,6 +1,6 @@
 function [Mvalores] = Ajuste(Entrada_Complexa)
 % Autor: Caio Mizerkowski
-% Fun��o: Ajustar os parametros entregues para a rede neural
+% Função: Ajustar os parametros entregues para a rede neural
     M = 2;
     
     Fase_Complexa = angle(Entrada_Complexa);
