@@ -37,7 +37,6 @@ function [] = Funcao_Rede_Geral
     save('PESOS.mat','Pesos');
     clear;
     %%%
-    beep
     
     %%%
     %Aplicando a rede pros Imaginarios
@@ -45,19 +44,19 @@ function [] = Funcao_Rede_Geral
     l = 1;
     save('l.mat','l');
 %     k = 1;
-%     save('k.mat','k');    
-    try
-        Pesos0 = load('PESOS_j.mat');
-        Pesos0 = Pesos0.Pesos_j;
-    catch
-        [Pesos0] = Criar_Pesos_Random;
-    end
-    options = optimoptions(@fminunc,'MaxIterations',num,'MaxFunctionEvaluations',num);
-    Pesos_j = fminunc(@Treinamento,Pesos0,options);
-    save('PESOS_j.mat','Pesos_j');
-    clear;
+%     save('k.mat','k');
+        %%%%%Isso será substituido!!!
+            try
+                Pesos0 = load('PESOS_j.mat');
+                Pesos0 = Pesos0.Pesos_j;
+            catch
+                [Pesos0] = Criar_Pesos_Random;
+            end
+            options = optimoptions(@fminunc,'MaxIterations',num,'MaxFunctionEvaluations',num);
+            Pesos_j = fminunc(@Treinamento,Pesos0,options);
+            save('PESOS_j.mat','Pesos_j');
+            clear;
     %%%
-    beep
     
     %%%
     %Etapa de Validação
@@ -66,7 +65,7 @@ function [] = Funcao_Rede_Geral
     
     %%%
     %Plotagens para verificação
-        Plotagens;
+    Plotagens;
     %%%
     
     %%%

@@ -3,6 +3,8 @@ function [] = Recepcao
     %Função de ativação: 2./(1+exp(-2x))-1;
     %Aproximação de Tanh, mais rápida de ser calculada;
     %%%
+    learning_rate = 0.5;
+    precision = 0.05;
     try
         Pesos0 = load('PESOS.mat');
         Pesos0 = Pesos0.Pesos;
@@ -17,20 +19,14 @@ function [] = Recepcao
         %%%
         
         %%%
-        %Determinar os valores para ajustar na última camada
-        Ajuste_Camada
-        %Aquele sigma grego
+        %Determinar os valores para ajustar
         %%%
         
         %%%
         %Ajustar o valor dos pesos, encontrar a nova saida
-        %Na camada oculta
-        Ajuste_Camada
-        %O segundo sigma
         %%%
-        
-        %%%
-        %Funções de parada
+        %Extrair novo erro
+        Treinamento
         %%%
     end
 end
