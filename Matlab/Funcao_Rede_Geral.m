@@ -20,42 +20,14 @@ function [] = Funcao_Rede_Geral
     
     %%%
     %Aplicando a rede pros Reais
-    num = 1e2;
-    l = 0;
-    save('l.mat','l');
-%     k = 1;
-%     save('k.mat','k');
-    try
-        Pesos0 = load('PESOS.mat');
-        Pesos0 = Pesos0.Pesos;
-    catch
-        [Pesos0] = Criar_Pesos_Random;
-    end
-    
-    options = optimoptions(@fminunc,'MaxIterations',num,'MaxFunctionEvaluations',num);
-    Pesos = fminunc(@Treinamento,Pesos0,options);
-    save('PESOS.mat','Pesos');
-    clear;
+    pesos = 'PESOS.mat';
+    Recepcao(pesos);
     %%%
     
     %%%
     %Aplicando a rede pros Imaginarios
-    num = 1e2;
-    l = 1;
-    save('l.mat','l');
-%     k = 1;
-%     save('k.mat','k');
-        %%%%%Isso será substituido!!!
-            try
-                Pesos0 = load('PESOS_j.mat');
-                Pesos0 = Pesos0.Pesos_j;
-            catch
-                [Pesos0] = Criar_Pesos_Random;
-            end
-            options = optimoptions(@fminunc,'MaxIterations',num,'MaxFunctionEvaluations',num);
-            Pesos_j = fminunc(@Treinamento,Pesos0,options);
-            save('PESOS_j.mat','Pesos_j');
-            clear;
+    pesos = 'PESOS_j.mat';
+    Recepcao(pesos);
     %%%
     
     %%%
@@ -72,5 +44,5 @@ function [] = Funcao_Rede_Geral
     %Usando os Pesos para reconstruir os valores
     %%%
     
-    delete('Dados.mat','l.mat','Saida.mat');
+    delete('Dados.mat','Saida.mat');
 end

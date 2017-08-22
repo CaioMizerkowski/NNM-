@@ -1,36 +1,36 @@
-function [] = Recepcao
+function [] = Recepcao(pesos_str)
     %%%
     %Função de ativação: 2./(1+exp(-2x))-1;
     %Aproximação de Tanh, mais rápida de ser calculada;
     %%%
     try
-        Pesos0 = load('PESOS.mat');
-        Pesos0 = Pesos0.Pesos;
+        Pesos = load(pesos_str);
+        Pesos = Pesos.Pesos;
     catch
-        [Pesos0] = Criar_Pesos_Random;
+        [Pesos] = Criar_Pesos_Random;
     end
-    while condicao1 || condicao2 || condicao3
+    
+    Ciclos = 1;
+    Erro_Novo = 0;
+    Dif_Erro = 10;
+    while (Ciclos<=1e3) || (Dif_Erro>=0.05) || condicao3
         %%%
         %Extrair os valores de entrada e saída interna na rede
         %E extrair o Erro
-        Treinamento
+        Erro = Treinamento;
         %%%
         
         %%%
         %Determinar os valores para ajustar na última camada
-        Ajuste_Camada
+        Ajuste_Camada(Pesos,Y1,Y2,I1);
         %Aquele sigma grego
         %%%
         
         %%%
-        %Ajustar o valor dos pesos, encontrar a nova saida
-        %Na camada oculta
-        Ajuste_Camada
-        %O segundo sigma
-        %%%
-        
-        %%%
         %Funções de parada
+        Dif_Erro = abs(Erro-Erro_Novo);
+        Erro_Novo = Erro;
+        Ciclos = Ciclos + 1;
         %%%
     end
 end

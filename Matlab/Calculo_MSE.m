@@ -1,5 +1,7 @@
 function [Erro] = Calculo_MSE(Saida)
     load('Dados.mat','Dados_Saida');
+    %%Vou ter que me livrar da dependecia desse l.mat, para as coisas
+    %%funcionarem direito!
     load('l.mat','l');
     if l == 0
         Esperado = real(Dados_Saida);
