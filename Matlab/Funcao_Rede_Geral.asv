@@ -7,7 +7,7 @@ function [] = Funcao_Rede_Geral
     %%%
     %Aplicando a rede pros Reais
     pesos = 'PESOS.mat';
-    complex = 0;
+    complex = false;
     save('complex.mat','complex')
     Recepcao(pesos);
     %%%
@@ -15,8 +15,6 @@ function [] = Funcao_Rede_Geral
     %%%
     %Aplicando a rede pros Imaginarios
     pesos = 'PESOS_j.mat';
-    complex = 1;
-    save('complex.mat','complex')
     Recepcao(pesos);
     %%%
     

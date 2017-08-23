@@ -21,7 +21,6 @@ function [] = Recepcao(pesos_str)
         %E extrair o Erro
         Erro = Treinamento(Pesos);
         %%%
-        disp(num2str(Ciclos));
         
         %%%
         %Determinar os valores para ajustar na última camada

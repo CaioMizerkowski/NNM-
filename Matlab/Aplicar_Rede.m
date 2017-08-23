@@ -12,6 +12,8 @@ function [Saida] = Aplicar_Rede(Entrada,Vetor_Pesos)
     
     %[C,N]=[C,E+1]*[E+1,N] -> Multiplicação e Soma
     Y = Entrada*Matriz_Pesos;
+    %save('')
+    
     clear Entrada Matriz_Pesos
     
     %[C,N+1] -> Função de Ativação e Bias
