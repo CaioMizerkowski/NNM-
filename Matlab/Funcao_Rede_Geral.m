@@ -3,7 +3,7 @@ function [] = Funcao_Rede_Geral
     %Ajuste dos Dados
     Salvando_Infos_Uso_Futuro;
     %%%
-    
+
     %%%
     %Aplicando a rede pros Reais
     pesos = 'PESOS.mat';
