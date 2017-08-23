@@ -11,18 +11,21 @@ function [] = Recepcao(pesos_str)
     end
     
     Ciclos = 1;
+    Ciclo_Max = 10;
     Erro_Novo = 0;
-    Dif_Erro = 10;
-    while (Ciclos<=1e3) || (Dif_Erro>=0.05) || condicao3
+    Dif_Erro = 1;
+    Erro_Min = 0.01;
+    while (Ciclos<=Ciclo_Max) || (Dif_Erro>=Erro_Min)
         %%%
         %Extrair os valores de entrada e saída interna na rede
         %E extrair o Erro
-        Erro = Treinamento;
+        Erro = Treinamento(Pesos);
         %%%
+        disp(num2str(Ciclos));
         
         %%%
         %Determinar os valores para ajustar na última camada
-        Ajuste_Camada(Pesos,Y1,Y2,I1);
+        %Ajuste_Camada(Pesos);
         %Aquele sigma grego
         %%%
         
