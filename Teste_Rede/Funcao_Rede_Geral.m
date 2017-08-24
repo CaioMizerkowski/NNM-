@@ -1,10 +1,10 @@
 function [] = Funcao_Rede_Geral
-    Data = load('dados.mat','in_extraction','out_extraction');
+    Data = load('data.mat','x','y');
     
     %%%
     %Ajuste dos Dados
-    Dados_Saida = Data.out_extraction;
-    Dados_Entrada = Data.in_extraction;
+    Dados_Saida = Data.y';
+    Dados_Entrada = Data.x';
     %%%
     
     %%%
@@ -21,11 +21,11 @@ function [] = Funcao_Rede_Geral
     %Aplicando a rede pros Reais
     l = 0;
     save('l.mat','l');
-%     k = 1;
-%     save('k.mat','k');
+    k = 1;
+    save('k.mat','k');
     [Pesos0] = Criar_Pesos_Random;
-    options = optimoptions(@fminunc,'MaxIterations',1e7,'MaxFunctionEvaluations',1e7);
-    Pesos = fminunc(@Treinamento,Pesos0,options);
+    options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt','MaxIterations',1e2,'MaxFunctionEvaluations',1e2);
+    Pesos = lsqnonlin(@Treinamento,Pesos0,[],[],options);
     save('PESOS.mat','Pesos');
     clear;
     %%%
@@ -57,5 +57,5 @@ function [] = Funcao_Rede_Geral
     %Plotagens para conferir de forma grafica
     %%%
     
-    delete('Dados.mat','l.mat');
+    delete('Dados.mat');
 end

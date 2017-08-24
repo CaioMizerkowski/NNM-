@@ -1,10 +1,10 @@
 function [Erro_r] = Validar
-    Data = load('data_LDMOS.mat','in_validation','out_validation');
+    Data = load('data.mat','xv','yv');
     
     %%%
     %Ajuste dos Dados
-    Dados_Saida = Data.out_validation;
-    Dados_Entrada = Data.in_validation;
+    Dados_Saida = Data.yv';
+    Dados_Entrada = Data.xv';
     %%%
     
     %%%
@@ -15,7 +15,7 @@ function [Erro_r] = Validar
 
     save('Dados.mat','Num_Entradas','Num_Saidas','Num_Neuronios','Dados_Entrada','Dados_Saida','-v6');
     %%%
-    
+   
 %     load('PESOS_j.mat');
     load('PESOS.mat');
     load('Dados.mat','Dados_Entrada')

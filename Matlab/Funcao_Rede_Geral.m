@@ -20,7 +20,7 @@ function [] = Funcao_Rede_Geral
     
     %%%
     %Aplicando a rede pros Reais
-    num = 1e2;
+    num = 1e7;
     l = 0;
     save('l.mat','l');
 %     k = 1;
@@ -32,8 +32,8 @@ function [] = Funcao_Rede_Geral
         [Pesos0] = Criar_Pesos_Random;
     end
     
-    options = optimoptions(@fminunc,'MaxIterations',num,'MaxFunctionEvaluations',num);
-    Pesos = fminunc(@Treinamento,Pesos0,options);
+    options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt','MaxIterations',num,'MaxFunctionEvaluations',num);
+    Pesos = lsqnonlin(@Treinamento,Pesos0,[],[],options);
     save('PESOS.mat','Pesos');
     clear;
     %%%
@@ -41,7 +41,7 @@ function [] = Funcao_Rede_Geral
     
     %%%
     %Aplicando a rede pros Imaginarios
-    num = 1e2;
+    num = 1e7;
     l = 1;
     save('l.mat','l');
 %     k = 1;
@@ -52,8 +52,8 @@ function [] = Funcao_Rede_Geral
     catch
         [Pesos0] = Criar_Pesos_Random;
     end
-    options = optimoptions(@fminunc,'MaxIterations',num,'MaxFunctionEvaluations',num);
-    Pesos_j = fminunc(@Treinamento,Pesos0,options);
+    options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt','MaxIterations',num,'MaxFunctionEvaluations',num);
+    Pesos_j = lsqnonlin(@Treinamento,Pesos0,[],[],options);
     save('PESOS_j.mat','Pesos_j');
     clear;
     %%%
