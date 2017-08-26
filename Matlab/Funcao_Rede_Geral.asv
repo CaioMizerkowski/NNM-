@@ -14,8 +14,7 @@ function [] = Funcao_Rede_Geral
     Num_Saidas = size(Dados_Saida,2);
     Num_Entradas = size(Dados_Entrada,2);
 
-    save('Dados.mat','Num_Entradas','Num_Saidas','Num_Neuronios',...
-        'Dados_Entrada','Dados_Saida','-v6');
+    save('Dados.mat','Num_Entradas','Num_Saidas','Num_Neuronios','Dados_Entrada','Dados_Saida','-v6');
     clear
     %%%
     
@@ -38,7 +37,7 @@ function [] = Funcao_Rede_Geral
     end
     
     options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt',...
-        'MaxIterations',num,'MaxFunctionEvaluations',num);
+        'MaxIterations',num,'MaxFunctionEvaluations',num,'StepTolerance');
     Pesos = lsqnonlin(@Treinamento,Pesos0,[],[],options);
     save('PESOS.mat','Pesos');
     clear;
@@ -58,7 +57,7 @@ function [] = Funcao_Rede_Geral
         [Pesos0] = Criar_Pesos_Random;
     end
     options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt',...
-        'MaxIterations',num,'MaxFunctionEvaluations',num);
+        'MaxIterations',num,'MaxFunctionEvaluations',num,'StepTolerance',1e-1000,'FunctionTolerance',1e-1000);
     Pesos_j = lsqnonlin(@Treinamento,Pesos0,[],[],options);
     save('PESOS_j.mat','Pesos_j');
     clear;

@@ -1,7 +1,8 @@
 function [Saida] = Aplicar_Rede(Entrada,Vetor_Pesos)
     [Matriz_Pesos,Matriz_Pesos2] = Vetor_2_Matriz(Vetor_Pesos);
     clear Vetor_Pesos
-    %[Q,E+1] -> Adicionado o vetor de Bias
+    %[C,E+1] -> Adicionado o vetor de Bias
+    %C - quantidade de entradas
     Entrada = [Entrada,ones(size(Entrada,1),1)];
     
     %[C,N]=[C,E+1]*[E+1,N] -> Multiplicação e Soma
@@ -16,4 +17,3 @@ function [Saida] = Aplicar_Rede(Entrada,Vetor_Pesos)
     Saida = Y*Matriz_Pesos2;
     Saida = 2./(1+exp(-2*Saida))-1;
 end
-

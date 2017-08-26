@@ -8,5 +8,5 @@ function [Erro] = Calculo_MSE(Saida)
         Esperado = imag(Dados_Saida(1:end-M));
     end
     N = size(Saida,1)*size(Saida,2);
-    Erro = sum(sum(abs(Saida-Esperado).^2))/N;
+    Erro = abs(Saida-Esperado).^2/N;
 end

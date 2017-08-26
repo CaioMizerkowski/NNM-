@@ -1,15 +1,16 @@
 function [] = Funcao_Rede_Geral
+    close all
     Data = load('data.mat','x','y');
     
     %%%
     %Ajuste dos Dados
-    Dados_Saida = Data.y';
-    Dados_Entrada = Data.x';
+    Dados_Saida = Data.y;
+    Dados_Entrada = Data.x;
     %%%
     
     %%%
     %Valores a serem usados
-    Num_Neuronios = 20;
+    Num_Neuronios = 8;
     Num_Saidas = size(Dados_Saida,2);
     Num_Entradas = size(Dados_Entrada,2);
 
@@ -23,8 +24,13 @@ function [] = Funcao_Rede_Geral
     save('l.mat','l');
     k = 1;
     save('k.mat','k');
-    [Pesos0] = Criar_Pesos_Random;
-    options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt','MaxIterations',1e2,'MaxFunctionEvaluations',1e2);
+    try
+        Pesos0 = load('PESOS.mat');
+        Pesos0 = Pesos0.Pesos;
+    catch
+        [Pesos0] = Criar_Pesos_Random;
+    end
+    options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt','MaxIterations',1e4,'MaxFunctionEvaluations',1e4,'StepTolerance',1e-1000,'FunctionTolerance',1e-1000);
     Pesos = lsqnonlin(@Treinamento,Pesos0,[],[],options);
     save('PESOS.mat','Pesos');
     clear;
@@ -46,7 +52,7 @@ function [] = Funcao_Rede_Geral
     %%%
     %Etapa de Validação
     [Erro] = Validar;
-    disp(['Erro: ',num2str(Erro),10,'Erro_j: ',num2str(0)])
+    disp(['Erro: ',num2str(sum(Erro)),10,'Erro_j: ',num2str(0)])
     %%%
     
     %%%

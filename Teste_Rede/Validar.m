@@ -3,13 +3,13 @@ function [Erro_r] = Validar
     
     %%%
     %Ajuste dos Dados
-    Dados_Saida = Data.yv';
-    Dados_Entrada = Data.xv';
+    Dados_Saida = Data.yv;
+    Dados_Entrada = Data.xv;
     %%%
     
     %%%
     %Valores a serem usados
-    Num_Neuronios = 20;
+    Num_Neuronios = 8;
     Num_Saidas = size(Dados_Saida,2);
     Num_Entradas = size(Dados_Entrada,2);
 
@@ -26,7 +26,7 @@ function [Erro_r] = Validar
     hold on
     plot(Dados_Entrada,Saida)
     plot(Dados_Entrada,Dados_Saida)
-    pause
+    hold off
     clear Saida
     
 %     l = 1;

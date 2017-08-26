@@ -5,7 +5,7 @@ function [Erro] = Treinamento(Pesos)
     clear Dados_Entrada;
     Erro = Calculo_MSE(Saida);
     %%%
-    disp(['Erro: ',num2str(Erro),' Loop: ',num2str(k)])
+    disp(['Erro: ',num2str(sum(Erro)),' Loop: ',num2str(sum(k))])
     k=k+1;
     save('k.mat','k');
 end
