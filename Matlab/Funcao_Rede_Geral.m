@@ -1,8 +1,8 @@
 function [] = Funcao_Rede_Geral
     Data = load('data_LDMOS.mat','in_extraction','out_extraction');
-    
     %%%
     %Ajuste dos Dados
+<<<<<<< HEAD
     M = 2;
     Dados_Saida = Data.out_extraction(1:end-M-1);
     Dados_Entrada = Ajuste(Data.in_extraction);
@@ -42,10 +42,22 @@ function [] = Funcao_Rede_Geral
     Pesos = lsqnonlin(@Treinamento,Pesos0,[],[],options);
     save('PESOS.mat','Pesos');
     clear;
+=======
+    Salvando_Infos_Uso_Futuro;
+    %%%
+
+    %%%
+    %Aplicando a rede pros Reais
+    pesos = 'PESOS.mat';
+    complex = 0;
+    save('complex.mat','complex')
+    Recepcao(pesos);
+>>>>>>> backf_adicionada
     %%%
     
     %%%
     %Aplicando a rede pros Imaginarios
+<<<<<<< HEAD
     num = 1e2;
     l = 1;
     save('l.mat','l');
@@ -62,6 +74,12 @@ function [] = Funcao_Rede_Geral
     Pesos_j = lsqnonlin(@Treinamento,Pesos0,[],[],options);
     save('PESOS_j.mat','Pesos_j');
     clear;
+=======
+    pesos = 'PESOS_j.mat';
+    complex = 1;
+    save('complex.mat','complex')
+    Recepcao(pesos);
+>>>>>>> backf_adicionada
     %%%
     
     %%%
@@ -77,6 +95,11 @@ function [] = Funcao_Rede_Geral
     %%%
     %Usando os Pesos para reconstruir os valores
     %%%
+<<<<<<< HEAD
     delete('Dados.mat','l.mat','Saida.mat');
     
+=======
+    
+    delete('Dados.mat','Saida.mat');
+>>>>>>> backf_adicionada
 end

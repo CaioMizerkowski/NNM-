@@ -1,13 +1,13 @@
 function [] = Validar
     Data = load('data_LDMOS.mat','in_validation','out_validation');
-    
+
     %%%
     %Ajuste dos Dados
     M = 2;
     Dados_Saida = Data.out_validation(1:end-M-1);
     Dados_Entrada = Ajuste(Data.in_validation);
     %%%
-    
+
     %%%
     %Valores a serem usados
     Num_Neuronios = 8;
@@ -19,6 +19,9 @@ function [] = Validar
     %%%
     
     load('PESOS_j.mat');
+
+    complex = false;
+    save('complex.mat','complex')
     load('PESOS.mat');
     load('Dados.mat','Dados_Entrada')
     l = 0;
@@ -31,6 +34,11 @@ function [] = Validar
     l = 1;
     save('l.mat','l');
     Saida_j = Aplicar_Rede(Dados_Entrada,Pesos_j);
+
+    complex = true;
+    save('complex.mat','complex')
+    load('PESOS_j.mat');
+    Saida_j = Aplicar_Rede(Dados_Entrada,Pesos);
     Erro_j = Calculo_MSE(Saida_j);
     save('Saida','Saida_j','-append');
     disp(['Erro: ',num2str(sum(Erro_r)),10,'Erro_j: ',num2str(sum(Erro_j))])
