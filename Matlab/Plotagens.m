@@ -1,9 +1,9 @@
 function[] = Plotagens
-    load('Dados.mat','Dados_Saida');
-    load('Saida');
-    Saida_c = abs(Saida_r + Saida_j);
+    load('Dados/Dados.mat','Dados_Saida');
+    load('Dados/Saida.mat');
+    Saida_c = real(Saida_r + Saida_j);
     
-    Real_Out = abs(Dados_Saida);
+    Real_Out = real(Dados_Saida);
     Imag_Out = imag(Dados_Saida);
     figure(1)
         hold on

@@ -1,4 +1,5 @@
 function [] = Validar
+<<<<<<< HEAD
     %%%
     Salvando_Infos_Uso_Futuro('Dados/data_LDMOS.mat','in_validation','out_validation');
     %%%
@@ -12,11 +13,18 @@ function [] = Validar
     Erro_r = Calculo_MSE(Saida_r);
     save('Dados/Saida','Saida_r');
     clear Saida_r
+<<<<<<< HEAD
 
     complex = 1;
     save('Dados/complex.mat','complex')
     load('Dados/PESOS_j.mat');
     Saida_j = Aplicar_Rede(Dados_Entrada,Pesos);
+=======
+    
+    l = 1;
+    save('l.mat','l');
+    Saida_j = Aplicar_Rede(Dados_Entrada,Pesos_j);
+>>>>>>> parent of 0dae647... Merge branch 'backf_adicionada'
     Erro_j = Calculo_MSE(Saida_j);
     save('Dados/Saida','Saida_j','-append');
     disp(['Erro: ',num2str(sum(Erro_r)),10,'Erro_j: ',num2str(sum(Erro_j))])
