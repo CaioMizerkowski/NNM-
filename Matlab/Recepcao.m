@@ -12,7 +12,7 @@ function [] = Recepcao(pesos_str)
     end
     
     Ciclos = 1;
-    Ciclo_Max = 5;
+    Ciclo_Max = 1000;
     Erro_Novo = 0;
     Dif_Erro = 1;
     Erro_Min = 0.01;

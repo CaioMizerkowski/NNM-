@@ -1,6 +1,6 @@
 function [] = Validar
     %%%
-    Salvando_Infos_Uso_Futuro('Dados/data_LDMOS.mat','in_validation','out_validation');
+    Salvando_Infos_Uso_Futuro('Dados/data.mat','in_validation','out_validation');
     %%%
 
     complex = 0;
