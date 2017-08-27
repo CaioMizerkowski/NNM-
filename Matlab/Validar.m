@@ -17,23 +17,15 @@ function [] = Validar
     save('Dados.mat','Num_Entradas','Num_Saidas','Num_Neuronios','Dados_Entrada','Dados_Saida','-v6');
     clear
     %%%
-    
-    load('PESOS_j.mat');
 
     complex = false;
     save('complex.mat','complex')
     load('PESOS.mat');
     load('Dados.mat','Dados_Entrada')
-    l = 0;
-    save('l.mat','l');
     Saida_r = Aplicar_Rede(Dados_Entrada,Pesos);
     Erro_r = Calculo_MSE(Saida_r);
     save('Saida','Saida_r');
     clear Saida_r
-    
-    l = 1;
-    save('l.mat','l');
-    Saida_j = Aplicar_Rede(Dados_Entrada,Pesos_j);
 
     complex = true;
     save('complex.mat','complex')
