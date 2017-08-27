@@ -9,4 +9,6 @@ function [Erro] = Calculo_MSE(Saida)
     end
     N = size(Saida,1)*size(Saida,2);
     Erro = abs(Saida-Esperado).^2/N;
+    plot(Saida)
+    drawnow
 end

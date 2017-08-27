@@ -21,7 +21,7 @@ function [] = Funcao_Rede_Geral
     
     %%%
     %Aplicando a rede pros Reais
-    num = 1e5;
+    num = 1e2;
     l = 0;
     save('l.mat','l');
 %     k = 1;
@@ -46,7 +46,7 @@ function [] = Funcao_Rede_Geral
     
     %%%
     %Aplicando a rede pros Imaginarios
-    num = 1e5;
+    num = 1e2;
     l = 1;
     save('l.mat','l');
 %     k = 1;

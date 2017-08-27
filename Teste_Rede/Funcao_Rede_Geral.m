@@ -10,11 +10,12 @@ function [] = Funcao_Rede_Geral
     
     %%%
     %Valores a serem usados
-    Num_Neuronios = 8;
+    Num_Neuronios = 100;
     Num_Saidas = size(Dados_Saida,2);
     Num_Entradas = size(Dados_Entrada,2);
 
-    save('Dados.mat','Num_Entradas','Num_Saidas','Num_Neuronios','Dados_Entrada','Dados_Saida','-v6');
+    save('Dados.mat','Num_Entradas','Num_Saidas','Num_Neuronios',...
+        'Dados_Entrada','Dados_Saida','-v6');
     clear
     %%%
     
@@ -30,7 +31,9 @@ function [] = Funcao_Rede_Geral
     catch
         [Pesos0] = Criar_Pesos_Random;
     end
-    options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt','MaxIterations',1e4,'MaxFunctionEvaluations',1e4,'StepTolerance',1e-1000,'FunctionTolerance',1e-1000);
+    options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt',...
+        'MaxIterations',1e4,'MaxFunctionEvaluations',1e4,...
+        'StepTolerance',1e-1000,'FunctionTolerance',1e-1000);
     Pesos = lsqnonlin(@Treinamento,Pesos0,[],[],options);
     save('PESOS.mat','Pesos');
     clear;
