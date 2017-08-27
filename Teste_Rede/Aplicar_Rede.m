@@ -1,18 +1,15 @@
 function [Saida] = Aplicar_Rede(Entrada,Vetor_Pesos)
-    [Matriz_Pesos,Matriz_Pesos2] = Vetor_2_Matriz(Vetor_Pesos);
+    %Ter que salvar em cada fase os valores de entrada e saída dos
+    %neuronios, acho que no final vai ser melhorar tornar essa função de
+    %uma entrada e uma saída, que puxa os valores dos pesos por string e
+    %criar uma função acima desta que reprodução a quantidade de vezes que
+    %eu preciso...
+    %Passar a receber uma strutc de pesos
+
+    [Pesos1,Pesos2] = Vetor_2_Matriz(Vetor_Pesos);
     clear Vetor_Pesos
-    %[Q,E+1] -> Adicionado o vetor de Bias
-    Entrada = [Entrada,ones(size(Entrada,1),1)];
-    
-    %[C,N]=[C,E+1]*[E+1,N] -> Multiplicação e Soma
-    Y = Entrada*Matriz_Pesos;
-    clear Entrada Matriz_Pesos
-    
-    %[C,N+1] -> Função de Ativação e Bias
-    Y = [2./(1+exp(-2.*Y))-1,ones(size(Y,1),1)];
-
+    %[C,N]=[C,E+1]*[E+1,N]
+    [Saida] = Multi_Matriz(Pesos1,Entrada,true);
     %[C,S]=[C,N+1]*[N+1,S]
-    Saida = Y*Matriz_Pesos2;
-    %Saida = 2./(1+exp(-2.*Saida))-1;
+    [Saida] = Multi_Matriz(Pesos2,Saida,false);
 end
-

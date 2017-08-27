@@ -1,14 +1,11 @@
 function [Erro] = Calculo_MSE(Saida)
     load('Dados.mat','Dados_Saida');
-    load('l.mat','l');
-    M = 0;
-    if l == 0
-        Esperado = real(Dados_Saida(1:end-M));
+    load('complex.mat','complex');
+    if complex == 0
+        Dados_Saida = real(Dados_Saida);
     else
-        Esperado = imag(Dados_Saida(1:end-M));
+        Dados_Saida = imag(Dados_Saida);
     end
     N = size(Saida,1)*size(Saida,2);
-    Erro = abs(Saida-Esperado).^2/N;
-    plot(Saida)
-    drawnow
+    Erro = abs(Saida-Dados_Saida).^2;
 end
