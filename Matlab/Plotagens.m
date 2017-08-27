@@ -7,7 +7,7 @@ function[] = Plotagens
     Imag_Out = imag(Dados_Saida);
     figure(1)
         hold on
-        plot(Saida_c(1:500),'k.')
+        plot(Saida_c(1:500))
         plot(Real_Out(1:500),'ro')
         hold off
 end

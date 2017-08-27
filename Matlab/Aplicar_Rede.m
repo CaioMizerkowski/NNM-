@@ -1,15 +1,14 @@
-function [Saida] = Aplicar_Rede(Entrada,Vetor_Pesos)
+function [SaidaY] = Aplicar_Rede(Entrada,Struct_Pesos)
     %Ter que salvar em cada fase os valores de entrada e saída dos
     %neuronios, acho que no final vai ser melhorar tornar essa função de
     %uma entrada e uma saída, que puxa os valores dos pesos por string e
     %criar uma função acima desta que reprodução a quantidade de vezes que
     %eu preciso...
     %Passar a receber uma strutc de pesos
-
-    [Pesos1,Pesos2] = Vetor_2_Matriz(Vetor_Pesos);
-    clear Vetor_Pesos
+    
     %[C,N]=[C,E+1]*[E+1,N]
-    [Saida] = Multi_Matriz(Pesos1,Entrada,true);
+    [SaidaY] = Multi_Matriz(Entrada,Struct_Pesos.Pesos1,true,'Dados/Camada_Hidden1.mat');
     %[C,S]=[C,N+1]*[N+1,S]
-    [Saida] = Multi_Matriz(Pesos2,Saida,false);
+    [SaidaY] = Multi_Matriz(SaidaY,Struct_Pesos.Pesos2,true,'Dados/Camada_Final.mat');
+    save('Dados/SaidaY.mat','SaidaY')
 end

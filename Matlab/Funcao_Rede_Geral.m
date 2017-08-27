@@ -1,21 +1,21 @@
 function [] = Funcao_Rede_Geral
     %%%
-    Salvando_Infos_Uso_Futuro;
+    Salvando_Infos_Uso_Futuro('Dados/data_LDMOS.mat','in_extraction','out_extraction');
     %%%
 
     %%%
     %Aplicando a rede pros Reais
-    pesos = 'PESOS.mat';
+    pesos = 'Dados/PESOS.mat';
     complex = 0;
-    save('complex.mat','complex')
+    save('Dados/complex.mat','complex')
     Recepcao(pesos);
     %%%
     
     %%%
     %Aplicando a rede pros Imaginarios
-    pesos = 'PESOS_j.mat';
+    pesos = 'Dados/PESOS_j.mat';
     complex = 1;
-    save('complex.mat','complex')
+    save('Dados/complex.mat','complex')
     Recepcao(pesos);
     %%%
     
@@ -32,5 +32,5 @@ function [] = Funcao_Rede_Geral
     %%%
     %Usando os Pesos para reconstruir os valores
     %%%   
-    delete('Dados.mat','Saida.mat','complex.mat');
+    delete('Dados/Dados.mat','Dados/Saida.mat','Dados/complex.mat','Dados/Camada_Final.mat','Dados/Camada_Hidden1.mat');
 end

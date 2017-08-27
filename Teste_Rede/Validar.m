@@ -18,7 +18,7 @@ function [] = Validar
     clear
     %%%
 
-    complex = false;
+    complex = 0;
     save('complex.mat','complex')
     load('PESOS.mat');
     load('Dados.mat','Dados_Entrada')
@@ -27,7 +27,7 @@ function [] = Validar
     save('Saida','Saida_r');
     clear Saida_r
 
-%     complex = true;
+%     complex = 1;
 %     save('complex.mat','complex')
 %     load('PESOS_j.mat');
 %     Saida_j = Aplicar_Rede(Dados_Entrada,Pesos);

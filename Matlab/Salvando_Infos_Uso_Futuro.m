@@ -1,8 +1,8 @@
-function [] = Salvando_Infos_Uso_Futuro
-    Data = load('data_LDMOS.mat','in_extraction','out_extraction');
+function [] = Salvando_Infos_Uso_Futuro(arquivo,entrada,saida)
+    Data = load(arquivo,entrada,saida);
     M = 2;
-    Dados_Saida = Data.out_extraction(1:end-M-1);
-    Dados_Entrada = Ajuste(Data.in_extraction);
+    Dados_Entrada = Ajuste(eval(strcat('Data.',entrada)));
+    Dados_Saida = eval(strcat('Data.',saida,'(1:end-M-1)'));
     %%%
     
     %%%
@@ -11,6 +11,6 @@ function [] = Salvando_Infos_Uso_Futuro
     Num_Saidas = size(Dados_Saida,2);
     Num_Entradas = size(Dados_Entrada,2);
     Rede_Tipo = [Num_Entradas, Num_Neuronios, Num_Saidas];
-    save('Dados.mat','Num_Entradas','Num_Saidas','Num_Neuronios',...
+    save('Dados/Dados.mat','Num_Entradas','Num_Saidas','Num_Neuronios',...
     'Dados_Entrada','Dados_Saida','-v6');
 end
