@@ -12,7 +12,7 @@ function [] = Recepcao(pesos_str)
     end
     
     Ciclos = 1;
-    Ciclo_Max = 1000;
+    Ciclo_Max = 100;
     Erro_Novo = 0;
     Dif_Erro = 1;
     Erro_Min = 0.01;
@@ -37,4 +37,5 @@ function [] = Recepcao(pesos_str)
         Ciclos = Ciclos + 1;
         %%%
     end
+    save(pesos_str,'Pesos')
 end

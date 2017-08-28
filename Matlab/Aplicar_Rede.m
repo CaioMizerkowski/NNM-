@@ -10,5 +10,5 @@ function [SaidaY] = Aplicar_Rede(Entrada,Struct_Pesos)
     [SaidaY] = Multi_Matriz(Entrada,Struct_Pesos.Pesos1,true,'Dados/Camada_Hidden1.mat');
     %[C,S]=[C,N+1]*[N+1,S]
     [SaidaY] = Multi_Matriz(SaidaY,Struct_Pesos.Pesos2,true,'Dados/Camada_Final.mat');
-    save('Dados/SaidaY.mat','SaidaY')
+    save('Dados\SaidaY.mat','SaidaY')
 end

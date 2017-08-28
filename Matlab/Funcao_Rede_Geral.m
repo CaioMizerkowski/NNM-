@@ -1,7 +1,6 @@
 function [] = Funcao_Rede_Geral
     %%%
-    Salvando_Infos_Uso_Futuro('Dados/data.mat','in_extraction',...
-        'out_extraction');
+    Salvando_Infos_Uso_Futuro('Dados/data.mat','x','y');
     %%%
 
     %%%

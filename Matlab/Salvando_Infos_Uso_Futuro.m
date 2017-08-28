@@ -1,8 +1,8 @@
 function [] = Salvando_Infos_Uso_Futuro(arquivo,entrada,saida)
     Data = load(arquivo,entrada,saida);
     M = 2;
-    Dados_Entrada = Ajuste(eval(strcat('Data.',entrada)));
-    Dados_Saida = eval(strcat('Data.',saida,'(1:end-M-1)'));
+    Dados_Entrada = eval(strcat('Data.',entrada));
+    Dados_Saida = eval(strcat('Data.',saida));
     %%%
     
     %%%
