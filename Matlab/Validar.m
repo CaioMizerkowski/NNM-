@@ -12,7 +12,7 @@ function [] = Validar
     Erro_r = Calculo_MSE(Saida_r);
     save('Dados/Saida','Saida_r');
     clear Saida_r
-
+    disp(['Erro: ',num2str(sum(Erro_r))])
 %     complex = 1;
 %     save('Dados/complex.mat','complex')
 %     load('Dados/PESOS_j.mat');

@@ -33,6 +33,6 @@ function [] = Funcao_Rede_Geral
     %Usando os Pesos para reconstruir os valores
     %%%   
     delete('Dados/Dados.mat','Dados/Saida.mat','Dados/complex.mat',...
-        'Dados/Camada_Final.mat','Dados/Camada_Hidden1.mat','Dados/SaidaY.mat');
+        'Dados/Camada_Final.mat','Dados/Camada_Hidden1.mat','Dados/Pesos.mat');
     %%%
 end
