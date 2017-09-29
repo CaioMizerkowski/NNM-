@@ -3,11 +3,11 @@ function[] = Plotagens
     load('Saida');
     Saida_c = abs(Saida_r + Saida_j);
     
-    Real_Out = abs(Dados_Saida);
+    Abs_Out = abs(Dados_Saida);
     Imag_Out = imag(Dados_Saida);
     figure(1)
         hold on
         plot(Saida_c(1:500),'k.')
-        plot(Real_Out(1:500),'ro')
+        plot(Abs_Out(1:500),'ro')
         hold off
 end

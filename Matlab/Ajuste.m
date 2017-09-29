@@ -4,6 +4,8 @@ function [Mvalores] = Ajuste(Entrada_Complexa)
     M = 2;
     
     Vetor_Absoluto = abs(Entrada_Complexa(2:end));
+    Vetor_Real = real(Entrada_Complexa(2:end-2));
+    Vetor_Imag = imag(Entrada_Complexa(2:end-2));
     Fase_Complexa = angle(Entrada_Complexa);
     clear Entrada_Complexa
     
@@ -24,5 +26,5 @@ function [Mvalores] = Ajuste(Entrada_Complexa)
         VC(:,M+1-k) = Vetor_Cossenos(k+1:end-M+k);
         VS(:,M+1-k) = Vetor_Senos(k+1:end-M+k);
     end
-    Mvalores = [VA,VC(:,1:end-1),VS(:,1:end-1)];
+    Mvalores = [VA,VC(:,1:end-1),VS(:,1:end-1),Vetor_Real,Vetor_Imag];
 end
