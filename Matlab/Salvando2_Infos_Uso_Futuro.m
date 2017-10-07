@@ -1,6 +1,6 @@
 function [] = Salvando2_Infos_Uso_Futuro
     Data = load('data_LDMOS.mat','in_extraction','out_extraction');
-    M = 5;
+    M = 2;
     Dados_Saida = Data.out_extraction;
     Dados_Entrada = [real(Data.in_extraction),imag(Data.in_extraction),abs(Data.in_extraction),angle(Data.in_extraction)];
     %%%
