@@ -16,23 +16,23 @@ function [] = Validar
     clear
     %%%
     
-    complex = 0;
+    complex = false;
     save('complex.mat','complex')
     load('PESOS.mat');
     load('Dados.mat','Dados_Entrada')
     Saida_r = Aplicar_Rede(Dados_Entrada,Pesos);
-%     Erro_r = Calculo_MSE(Saida_r);
+    Erro_r = Calculo_MSE(Saida_r);
 %     clear Saida_r
 
-    complex = 1;
+    complex = true;
     save('complex.mat','complex')
     load('PESOS_j.mat');   
     Saida_j = Aplicar_Rede(Dados_Entrada,Pesos);
-%     Erro_j = Calculo_MSE(Saida_j);
+    Erro_j = Calculo_MSE(Saida_j);
 
     save('Saida','Saida_r');
     save('Saida','Saida_j','-append');
-%     disp(['Erro: ',num2str(sum(Erro_r)),10,'Erro_j: ',num2str(sum(Erro_j))])
+    disp(['Erro: ',num2str(sum(abs(Erro_r))),10,'Erro_j: ',num2str(sum(abs(Erro_j)))])
 
     load('data_LDMOS.mat','in_validation');
     Fase = angle(in_validation(3:end));

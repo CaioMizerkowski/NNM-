@@ -14,11 +14,16 @@ function [] = Recepcao(pesos_str)
         num = 1e3;
 %     k = 1;
 %     save('k.mat','k');
-
+try
     options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt'...
         ,'MaxIterations',num,'MaxFunctionEvaluations',num);
         %'StepTolerance',1e-12,'FunctionTolerance',1e-12);
     Pesos = lsqnonlin(@Treinamento,Pesos0,[],[],options);
     save(pesos_str,'Pesos');
     clear;
+catch
+    delete('PESOS.mat','PESOS_j');
+    pause
+    return;
+end
 end

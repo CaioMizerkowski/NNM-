@@ -6,16 +6,15 @@ function [Matrix_Valores] = Ajuste(Entrada_Complexa,M)
     tamanho = length(Fase);
     n = 2:tamanho;
     Delta_Fase = Fase(n) - Fase(n-1);
-    clear Fase n
+    clear n
     
     Cossenos = cos(Delta_Fase);    
     Senos = sin(Delta_Fase);
-    clear Fase Delta_Fase
+    clear Delta_Fase
     
     VA = zeros(tamanho-M,M+1);
     VC = zeros(tamanho-M,M);
     VS = zeros(tamanho-M,M);
-    clear tamanho
     
     for k = 0:M
         VA(:,M+1-k) = Amplitude(k+1:end+k-M);

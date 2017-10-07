@@ -7,5 +7,5 @@ function [Erro] = Calculo_MSE(Saida)
         Dados_Saida = imag(Dados_Saida);
     end
     N = size(Saida,1)*size(Saida,2);
-    Erro = abs(Saida-Dados_Saida).^2/N;
+    Erro = (Saida-Dados_Saida).^2/N;
 end

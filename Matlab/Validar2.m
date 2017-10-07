@@ -1,15 +1,13 @@
 function [] = Validar2
     Data = load('data_LDMOS.mat','in_validation','out_validation');
-    
+    load('Dados.mat','M','Num_Neuronios');
     %%%
     %Ajuste dos Dados
-    M = 2;
     Dados_Saida = Data.out_validation;
     Dados_Entrada = [real(Data.in_validation),imag(Data.in_validation),abs(Data.in_validation),angle(Data.in_validation)];
     %%%    
     %%%
     %Valores a serem usados
-    Num_Neuronios = 8;
     Num_Saidas = size(Dados_Saida,2);
     Num_Entradas = size(Dados_Entrada,2);
 
@@ -32,5 +30,5 @@ function [] = Validar2
     Saida_j = Aplicar_Rede(Dados_Entrada,Pesos);
     Erro_j = Calculo_MSE(Saida_j);
     save('Saida','Saida_j','-append');
-    disp(['Erro: ',num2str(sum(Erro_r)),10,'Erro_j: ',num2str(sum(Erro_j))])
+    disp(['Erro: ',num2str(sum(abs(Erro_r))),10,'Erro_j: ',num2str(sum(abs(Erro_j)))])
 end
