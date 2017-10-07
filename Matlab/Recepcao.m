@@ -11,7 +11,7 @@ function [] = Recepcao(pesos_str)
         [Pesos0] = Criar_Pesos_Random;
     end
     
-        num = 1e3;
+        num = 1e4;
 %     k = 1;
 %     save('k.mat','k');
 try
@@ -22,8 +22,7 @@ try
     save(pesos_str,'Pesos');
     clear;
 catch
-    delete('PESOS.mat','PESOS_j');
-    pause
+    delete('PESOS.mat','PESOS_j.mat');
     return;
 end
 end

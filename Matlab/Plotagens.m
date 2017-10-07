@@ -3,10 +3,10 @@ function[] = Plotagens
     load('Saida');
 
     abs_ent = abs(Dados_Entrada(:,1));
-    abs_out = abs(Dados_Saida);
-    abs_sai = abs(Saida_r+1i*Saida_j);
-    plot(abs_out(1:200),'.');
+    abs_out = real(Dados_Saida);
+    abs_sai = real(Saida_r+1i*Saida_j);
+    plot(abs_out,'.');
     hold on
-    plot(abs_sai(1:200),'o');
+    plot(abs_sai,'o');
     legend('Real','Rede')
 end

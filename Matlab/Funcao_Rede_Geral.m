@@ -1,7 +1,7 @@
 function [] = Funcao_Rede_Geral
     %%%
-    Salvando_Infos_Uso_Futuro;
-    %Salvando2_Infos_Uso_Futuro;
+    %Salvando_Infos_Uso_Futuro;
+    Salvando2_Infos_Uso_Futuro;
     %%%
 
     %%%
@@ -24,8 +24,8 @@ function [] = Funcao_Rede_Geral
     Recepcao(pesos);
     
     %Etapa de Validação
-    Validar;
-    %Validar2;
+    %Validar;
+    Validar2;
     %%%
     
     %%%

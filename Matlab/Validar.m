@@ -6,7 +6,6 @@ function [] = Validar
     Dados_Saida = Dados_Validation.out_validation(M+1:end);
     Dados_Entrada = Ajuste(Dados_Validation.in_validation,M);
     %%%
-    
     %%%
     %Valores a serem usados
     Num_Saidas = size(Dados_Saida,2);

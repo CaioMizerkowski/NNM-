@@ -1,6 +1,8 @@
 function [Matrix_Valores] = Ajuste(Entrada_Complexa,M)
     Amplitude = abs(Entrada_Complexa);
     Fase = angle(Entrada_Complexa);
+    REAL = real(Entrada_Complexa);
+    IMAG = imag(Entrada_Complexa);
     clear Entrada_Complexa
     
     tamanho = length(Fase);
