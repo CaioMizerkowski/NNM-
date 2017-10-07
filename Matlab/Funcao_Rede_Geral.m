@@ -1,27 +1,32 @@
 function [] = Funcao_Rede_Geral
     %%%
-    Salvando_Infos_Uso_Futuro('Dados/data.mat','x','y');
+    Salvando_Infos_Uso_Futuro;
+    %Salvando_Infos_Uso_Futuro2;
     %%%
 
     %%%
     %Aplicando a rede pros Reais
-    pesos = 'Dados/PESOS.mat';
+    pesos = 'PESOS.mat';
+    k = 1;
+    save('k.mat','k')
     complex = 0;
-    save('Dados/complex.mat','complex')
+    save('complex.mat','complex')
     Recepcao(pesos);
-    %%%
     
-    %%%
-    %Aplicando a rede pros Imaginarios
-% %     pesos = 'Dados/PESOS_j.mat';
-% %     complex = 1;
-% %     save('Dados/complex.mat','complex')
-% %     Recepcao(pesos);
-    %%%
+    %Aplicando a rede pros Reais
+    pesos = 'PESOS_j.mat';
+    k = 1;
+    save('k.mat','k')
+    complex = 1;
+    save('complex.mat','complex')
+    Recepcao(pesos);
     
-    %%%
+    %Etapa de Junção dos Dados
+    
+    
     %Etapa de Validação
     Validar;
+    %Validar2;
     %%%
     
     %%%
@@ -31,8 +36,6 @@ function [] = Funcao_Rede_Geral
     
     %%%
     %Usando os Pesos para reconstruir os valores
-    %%%   
-    delete('Dados/Dados.mat','Dados/Saida.mat','Dados/complex.mat',...
-        'Dados/Camada_Final.mat','Dados/Camada_Hidden1.mat','Dados/Pesos.mat');
+    delete('Dados.mat','Saida.mat','complex.mat','k.mat');
     %%%
 end

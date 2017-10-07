@@ -1,13 +1,8 @@
 function[] = Plotagens
-    load('Dados/Dados.mat','Dados_Saida');
-    load('Dados/Saida.mat');
-%     Saida_c = real(Saida_r + Saida_j);
-    
-    Real_Out = real(Dados_Saida);
-    Imag_Out = imag(Dados_Saida);
-    figure(1)
-        hold on
-        plot(Saida_r(1:500))
-        plot(Real_Out(1:500),'ro')
-        hold off
+    load('Dados.mat','Dados_Entrada','Dados_Saida');
+    load('Saida');
+
+    Abs_In = abs(Dados_Entrada(:,1));
+    Re_Out = imag(Dados_Saida);
+    plot(Abs_In,Re_Out,'.');
 end
