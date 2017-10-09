@@ -1,13 +1,11 @@
 function [Matrix_Valores] = Ajuste(Entrada_Complexa,M)
     Amplitude = abs(Entrada_Complexa);
-    Fase = angle(Entrada_Complexa);
-    REAL = real(Entrada_Complexa);
-    IMAG = imag(Entrada_Complexa);
+    Fase = wrapTo2Pi(angle(Entrada_Complexa));
     clear Entrada_Complexa
     
     tamanho = length(Fase);
     n = 2:tamanho;
-    Delta_Fase = Fase(n) - Fase(n-1);
+    Delta_Fase = wrapTo2Pi(Fase(n) - Fase(n-1));
     clear n
     
     Cossenos = cos(Delta_Fase);    

@@ -1,34 +1,56 @@
 close
 clear
-M=8;
-var1=50;
+
+%%
+var1=500;
 var2=0;
 
-Salvando_Infos_Uso_Futuro('Dados/data_LDMOS.mat','in_extraction','out_extraction',M);
-load('Dados/Dados.mat','Num_Neuronios','Dados_Entrada','Dados_Saida');
-net = feedforwardnet(Num_Neuronios);
-net = train(net,Dados_Entrada,real(Dados_Saida));
-y = net(Dados_Entrada);
+Salvando2_Infos_Uso_Futuro;
+load('Dados.mat','Num_Neuronios','Dados_Entrada','Dados_Saida');
+Parte_Real = feedforwardnet(Num_Neuronios);
+Parte_Real = train(Parte_Real,Dados_Entrada',real(Dados_Saida)');
 
-figure()
-subplot(2,1,1)
+load('data_LDMOS.mat','in_validation','out_validation');
+load('Dados.mat','M');
+Dados_Saida = in_validation(1:end);
+Dados_Entrada = [real(out_validation),imag(out_validation),abs(out_validation),angle(out_validation)];
+y = Parte_Real(Dados_Entrada');
+
+figure(1)
 hold on
 plot(real(Dados_Saida(end-var1-var2:end-var2)),'b.-');
 plot(y(end-var1-var2:end-var2),'ro');
 grid
+legend('Original','Rede')
+title('Toolbox')
+ylabel('Parte Real')
+xlabel('Amostra')
 hold off
+clear
 
-Salvando_Infos_Uso_Futuro('Dados/data_LDMOS.mat','out_validation','in_validation',M);
-load('Dados/Dados.mat','Num_Neuronios','Dados_Entrada','Dados_Saida');
-y = net(Dados_Entrada);
+%%
+var1=500;
+var2=0;
 
-subplot(2,1,2)
+Salvando2_Infos_Uso_Futuro;
+load('Dados.mat','Num_Neuronios','Dados_Entrada','Dados_Saida');
+Parte_Imag = feedforwardnet(Num_Neuronios);
+Parte_Imag = train(Parte_Imag,Dados_Entrada',imag(Dados_Saida)');
+
+load('data_LDMOS.mat','in_validation','out_validation');
+load('Dados.mat','M');
+Dados_Saida = in_validation(1:end);
+Dados_Entrada = [real(out_validation),imag(out_validation),abs(out_validation),angle(out_validation)];
+y = Parte_Imag(Dados_Entrada');
+
+figure(2)
 hold on
-plot(real(Dados_Saida(end-var1-var2:end-var2)),'b.-');
+plot(imag(Dados_Saida(end-var1-var2:end-var2)),'b.-');
 plot(y(end-var1-var2:end-var2),'ro');
 grid
+legend('Original','Rede')
+title('Toolbox')
+ylabel('Parte Imaginaria')
+xlabel('Amostra')
 hold off
-IW = net.IW;
-LW = net.LW;
-b = net.b;
 clear

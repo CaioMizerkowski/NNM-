@@ -1,7 +1,6 @@
 function [] = Funcao_Rede_Geral
     %%%
-    %Salvando_Infos_Uso_Futuro;
-    Salvando2_Infos_Uso_Futuro;
+    Salvando_Infos_Uso_Futuro;
     %%%
 
     %%%
@@ -12,9 +11,16 @@ function [] = Funcao_Rede_Geral
     complex = 0;
     save('complex.mat','complex')
     Recepcao(pesos);
+    %%%
+    
+    %%%
+    %Verificando erros
     if ~exist('PESOS.mat')
         return;
     end
+    %%%
+    
+    %%%
     %Aplicando a rede pros Reais
     pesos = 'PESOS_j.mat';
     k = 1;
@@ -22,10 +28,11 @@ function [] = Funcao_Rede_Geral
     complex = 1;
     save('complex.mat','complex')
     Recepcao(pesos);
+    %%%
     
+    %%%
     %Etapa de Validação
-    %Validar;
-    Validar2;
+    Validar;
     %%%
     
     %%%
