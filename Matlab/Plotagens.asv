@@ -1,7 +1,7 @@
 function[] = Plotagens
     close all
-    var1=1500;
-    var2=1000;
+    var1=100;
+    var2=;
     
     load('Dados.mat','Dados_Entrada','Dados_Saida','M');
     load('Saida');
@@ -40,9 +40,9 @@ function[] = Plotagens
         abs_sai = real(Saida_complexa);
         abs_in = Dados_Entrada(:,1);
         abs_out = real(Saida_complexa);
-        plot(abs_in(1:end),abs_sai(1:end),'*k');
+        plot(abs_in(end-var1-var2:end-var2),abs_sai(end-var1-var2:end-var2),'*k');
         hold on
-        plot(abs_in(1:end),abs_out(1:end),'xr');
+        plot(abs_in(end-var1-var2:end-var2),abs_out(end-var1-var2:end-var2),'xr');
 
 %         legend('Imaginario')
         title('')
@@ -54,9 +54,9 @@ function[] = Plotagens
         imag_sai = imag(Saida_complexa);
         abs_in = Dados_Entrada(:,1);
         imag_out = imag(Saida_complexa);
-        plot(abs_in(1:end),imag_sai(1:end),'*k');
+        plot(abs_in(end-var1-var2:end-var2),imag_sai(end-var1-var2:end-var2),'*k');
         hold on
-        plot(abs_in(1:end),imag_out(1:end),'xr');
+        plot(abs_in(end-var1-var2:end-var2),imag_out(end-var1-var2:end-var2),'xr');
 
 %         legend('Imaginario')
         title('')
@@ -68,9 +68,9 @@ function[] = Plotagens
         imag_sai = angle(Saida_complexa);
         abs_in = Dados_Entrada(:,1);
         imag_out = angle(Saida_complexa);
-        plot(abs_in(1:end),imag_sai(1:end),'*k');
+        plot(abs_in(end-var1-var2:end-var2),imag_sai(end-var1-var2:end-var2),'*k');
         hold on
-        plot(abs_in(1:end),imag_out(1:end),'xr');
+        plot(abs_in(end-var1-var2:end-var2),imag_out(end-var1-var2:end-var2),'xr');
 
 %         legend('Imaginario')
         title('')
@@ -82,9 +82,9 @@ function[] = Plotagens
         abs_sai = abs(Saida_complexa);
         abs_in = Dados_Entrada(:,1);
         abs_out = abs(Saida_complexa);
-        plot(abs_in(1:end),abs_sai(1:end),'*k');
+        plot(abs_in(end-var1-var2:end-var2),abs_sai(end-var1-var2:end-var2),'*k');
         hold on
-        plot(abs_in(1:end),abs_out(1:end),'xr');
+        plot(abs_in(end-var1-var2:end-var2),abs_out(end-var1-var2:end-var2),'xr');
 
 %         legend('Imaginario')
         title('')

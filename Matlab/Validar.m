@@ -4,8 +4,9 @@ function [] = Validar
     
     %%%
     %Ajuste dos Dados
-    Dados_Saida = Dados_Validation.out_validation(M+1:end);
-    Dados_Entrada = Ajuste(Dados_Validation.in_validation,M);
+    Dados_Saida = Dados_Validation.in_validation(M+1:end).*exp(-1i*wrapTo2Pi(angle(Dados_Validation.out_validation(M+1:end))));
+    %ajustar os dados de saida
+    Dados_Entrada = Ajuste(Dados_Validation.out_validation,M);
     %%%
     
     %%%
@@ -18,7 +19,7 @@ function [] = Validar
     %%%
     
     load('Dados.mat','Dados_Entrada')
-
+    load('Dados.mat','M')
     complex = false;
     save('complex.mat','complex')
     load('PESOS.mat');
@@ -30,8 +31,8 @@ function [] = Validar
     Saida_j = Aplicar_Rede(Dados_Entrada,Pesos);
     
     load('data_LDMOS.mat','in_validation');
-    Fase = angle(in_validation(3:end));
-    Saida_complexa = (Saida_r+1i*Saida_j).*exp(1i*Fase);
+    Fase = angle(in_validation(M+1:end));
+    Saida_complexa = (Saida_r+1i*Saida_j);%.*exp(1i*Fase);
     save('Saida.mat','Saida_complexa');
     
     complex = false;

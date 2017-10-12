@@ -1,9 +1,9 @@
 function [] = Salvando_Infos_Uso_Futuro
     Data = load('data_LDMOS.mat','in_extraction','out_extraction');
     M = 2;
-    Dados_Saida = Data.out_extraction(M+1:end).*exp(-1i*wrapTo2Pi(angle(Data.in_extraction(M+1:end))));
+    Dados_Saida = Data.in_extraction(M+1:end).*exp(-1i*wrapTo2Pi(angle(Data.out_extraction(M+1:end))));
     %ajustar os dados de saida
-    Dados_Entrada = Ajuste(Data.in_extraction,M);
+    Dados_Entrada = Ajuste(Data.out_extraction,M);
     %%%
     
     %%%

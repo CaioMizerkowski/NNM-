@@ -16,6 +16,7 @@ function [] = Funcao_Rede_Geral
     %%%
     %Verificando erros
     if ~exist('PESOS.mat')
+        Funcao_Rede_Geral;
         return;
     end
     %%%
