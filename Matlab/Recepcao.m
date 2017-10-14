@@ -16,8 +16,8 @@ function [] = Recepcao(pesos_str)
 %     save('k.mat','k');
 try
     options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt'...
-        ,'MaxIterations',num,'MaxFunctionEvaluations',num);
-        %'StepTolerance',1e-12,'FunctionTolerance',1e-12);
+        ,'MaxIterations',num,'MaxFunctionEvaluations',num,...
+        'StepTolerance',1e-12,'FunctionTolerance',1e-12);
     Pesos = lsqnonlin(@Treinamento,Pesos0,[],[],options);
     save(pesos_str,'Pesos');
     clear;

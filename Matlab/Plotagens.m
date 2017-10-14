@@ -1,14 +1,17 @@
 function[] = Plotagens
     close all
-    var1=1500;
-    var2=1000;
+    var1=500;
+    var2=0;
+    passo1=13;
     
     load('Dados.mat','Dados_Entrada','Dados_Saida','M');
     load('Saida');
     load('data_LDMOS.mat','in_validation');
     Fase = angle(in_validation(M+1:end));
-
-    figure(1)
+    
+    figure('units','pixels','position',[0 0 1920 1080],'ToolBar','none','MenuBar','none')
+        subplot(2,1,1)
+        
         real_out = real(Dados_Saida.*exp(1i*Fase));
         real_sai = real(Saida_complexa.*exp(1i*Fase));
         
@@ -16,13 +19,16 @@ function[] = Plotagens
         hold on
         plot(real_sai(end-var1-var2:end-var2),'or');
         
-        legend('Real','Rede')
+        xlim([0,500]);
+        ylim([-1,1]);
+        legend('Original','Estimado')
         title('Parte Real dos Dados')
-        ylabel('Real')
+        ylabel('Parte Real')
         xlabel('Amostra')
         grid
-    
-    figure(2)
+%     figure(2)        
+        subplot(2,1,2)    
+
         imag_out = imag(Dados_Saida.*exp(1i*Fase));
         imag_sai = imag(Saida_complexa.*exp(1i*Fase));
 
@@ -30,65 +36,73 @@ function[] = Plotagens
         hold on
         plot(imag_sai(end-var1-var2:end-var2),'or');
 
-        legend('Imaginario','Rede')
+        xlim([0,500]);
+        legend('Original','Estimado')
         title('Parte Imaginaria dos Dados')
-        ylabel('Imaginario')
+        ylabel('Parte Imaginaria')
         xlabel('Amostra')
         grid
+%         print('Figura1','-depsc');
         
-    figure(3)
-        abs_sai = real(Saida_complexa);
+    figure('units','pixels','position',[0 0 1920 1080],'ToolBar','none','MenuBar','none')
+        subplot(2,2,1)
+        real_sai = real(Dados_Saida);
         abs_in = Dados_Entrada(:,1);
-        abs_out = real(Saida_complexa);
-        plot(abs_in(1:end),abs_sai(1:end),'*k');
+        real_out = real(Saida_complexa);
+        plot(abs_in(1:passo1:end),real_out(1:passo1:end),'ok','MarkerFaceColor', 'k');
         hold on
-        plot(abs_in(1:end),abs_out(1:end),'xr');
-
-%         legend('Imaginario')
+        plot(abs_in(1:passo1:end),real_sai(1:passo1:end),'xr');
+        
+        legend('Estimado','Original','Location','northwest')
         title('')
-        ylabel('Real_{s}')
+        ylabel('R_{s}')
         xlabel('A_{x}')
         grid
         
-    figure(4)
-        imag_sai = imag(Saida_complexa);
+%     figure(4)
+        subplot(2,2,2)
+        imag_sai = imag(Dados_Saida);
         abs_in = Dados_Entrada(:,1);
         imag_out = imag(Saida_complexa);
-        plot(abs_in(1:end),imag_sai(1:end),'*k');
+        plot(abs_in(1:passo1:end),imag_out(1:passo1:end),'ok','MarkerFaceColor', 'k');
         hold on
-        plot(abs_in(1:end),imag_out(1:end),'xr');
+        plot(abs_in(1:passo1:end),imag_sai(1:passo1:end),'xr');
 
-%         legend('Imaginario')
+        legend('Estimado','Original')
         title('')
-        ylabel('Imag_{s}')
+        ylabel('I_{s}')
         xlabel('A_{x}')
         grid
         
-    figure(5)
-        imag_sai = angle(Saida_complexa);
+%     figure(5)
+        subplot(2,2,4)
+        phas_sai = angle(Dados_Saida);
         abs_in = Dados_Entrada(:,1);
-        imag_out = angle(Saida_complexa);
-        plot(abs_in(1:end),imag_sai(1:end),'*k');
+        phas_out = angle(Saida_complexa);
+        plot(abs_in(1:passo1:end),phas_out(1:passo1:end),'ok','MarkerFaceColor', 'k');
         hold on
-        plot(abs_in(1:end),imag_out(1:end),'xr');
-
-%         legend('Imaginario')
+        plot(abs_in(1:passo1:end),phas_sai(1:passo1:end),'xr');
+        
+        legend('Estimado','Original')
         title('')
         ylabel('F_{s}')
         xlabel('A_{x}')
         grid
         
-    figure(6)
-        abs_sai = abs(Saida_complexa);
+%     figure(6)
+        subplot(2,2,3)
+        abs_sai = abs(Dados_Saida);
         abs_in = Dados_Entrada(:,1);
         abs_out = abs(Saida_complexa);
-        plot(abs_in(1:end),abs_sai(1:end),'*k');
+        plot(abs_in(1:passo1:end),abs_out(1:passo1:end),'ok','MarkerFaceColor', 'k');
         hold on
-        plot(abs_in(1:end),abs_out(1:end),'xr');
-
-%         legend('Imaginario')
+        plot(abs_in(1:passo1:end),abs_sai(1:passo1:end),'xr');
+        
+        legend('Estimado','Original','Location','northwest')
         title('')
         ylabel('A_{s}')
         xlabel('A_{x}')
         grid
+        
+%         print('Figura2','-depsc');
 end
