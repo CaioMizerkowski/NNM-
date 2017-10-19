@@ -45,7 +45,7 @@ for h=1
         ylabel('Parte Imaginaria')
         xlabel('Amostra')
         grid
-        print('Figura1_inv','-depsc');
+%         print('Figura1_inv','-depsc');
 end
 
 for h=1
@@ -109,7 +109,7 @@ for h=1
         ylabel('A_{s}')
         xlabel('A_{x}')
         grid
-        print('Figura2_inv','-depsc');
+%         print('Figura2_inv','-depsc');
 end
 
 for h=1
@@ -153,7 +153,20 @@ for h=1
         xlabel('Estimado')
         ylabel('Original')
         grid
-        print('Figura3_inv','-depsc');
+%         print('Figura3_inv','-depsc');
+end
+
+for h=1
+%Diferença de fase entre entrada e saída da cascada NNInversa -> NN, em função da amplitude de entrada
+    %figure('units','pixels','position',[0 0 1920 1080],'ToolBar','none','MenuBar','none')
+        close all
+        dif_fase = wrapTo2Pi(angle(Entradas_Estimadas(3:end))) - wrapTo2Pi(angle(Saida_complexa));
+        plot(abs_in(1:passo1:end),dif_fase(1:passo1:end),'.k');
+        
+        title('Diferença de Fase por Amplitude da Entrada')
+        xlabel('Amplitude de Entrada')
+        ylabel('Diferença de Fase')
+        grid
 end
 
 end

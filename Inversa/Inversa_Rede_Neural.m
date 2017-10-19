@@ -1,4 +1,4 @@
-function [] = Inversa_Rede_Neural
+function [a,b,c,d,e,Vetor_Erro] = Inversa_Rede_Neural
 %     delete('Entradas_Estimadas.mat');
     M=2;
     load('data_LDMOS.mat','out_validation');
@@ -23,8 +23,9 @@ function [] = Inversa_Rede_Neural
     Pesos_j=Pesos;
     load('data_LDMOS.mat','in_validation');
     options = optimset('Display','off','Algorithm','levenberg-marquardt');
-    
+    t = 0;
     for Amostra = 1:8499
+        tic
 %         Rede_Real = @(x) Rede_Real_P(x,Amostra,in_validation,Entradas_Estimadas,Pesos_r);
 %         Rede_Imag = @(x) Rede_Imag_P(x,Amostra,in_validation,Entradas_Estimadas,Pesos_j);
 %         [x_r,Minimizar(1)] = fsolve(Rede_Real,xr,options);
@@ -38,8 +39,10 @@ function [] = Inversa_Rede_Neural
         Entradas_Estimadas(Amostra+M) = x_t;
 %         disp(['Minimizar Real: ',num2str(abs(Minimizar(1))),...
 %            10,'Minimizar Imag: ',num2str(abs(Minimizar(2)))]);
-
+        t = t+toc;
     end
+    t = t/8499;
+    disp(t);
     save('Entradas_Estimadas.mat','Entradas_Estimadas','-v6');
     Comparar;
     Validar;

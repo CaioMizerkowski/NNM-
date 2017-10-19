@@ -2,7 +2,7 @@ function[] = Plotagens
     close all
     var1=500;
     var2=0;
-    passo1=13;
+    passo1=1;
     
     load('Dados.mat','Dados_Entrada','Dados_Saida','M');
     load('Saida');
@@ -42,7 +42,7 @@ function[] = Plotagens
         ylabel('Parte Imaginaria')
         xlabel('Amostra')
         grid
-%         print('Figura1','-depsc');
+        print('Figura1','-depsc');
         
     figure('units','pixels','position',[0 0 1920 1080],'ToolBar','none','MenuBar','none')
         subplot(2,2,1)
@@ -104,5 +104,5 @@ function[] = Plotagens
         xlabel('A_{x}')
         grid
         
-%         print('Figura2','-depsc');
+        print('Figura2','-depsc');
 end
