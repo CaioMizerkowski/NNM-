@@ -1,51 +1,40 @@
-function [a,b,c,d,e,Vetor_Erro] = Inversa_Rede_Neural
-%     delete('Entradas_Estimadas.mat');
+function [Erro,Vetor_Erro] = Inversa_Rede_Neural
+    global M;
     M=2;
     load('data_LDMOS.mat','out_validation');
     Entradas_Estimadas = out_validation(1:M);
     save('Entradas_Estimadas.mat','Entradas_Estimadas','-v6');
     clear out_validation
-    
-%     xr = 1;
-%     xj = 1;
-%     Rede_Real_P = @(x,Amostra,in_validation,Entradas_Estimadas,Pesos_r)...
-%              Rede_R(x,Amostra,in_validation,Entradas_Estimadas,Pesos_r);
-%     Rede_Imag_P = @(x,Amostra,in_validation,Entradas_Estimadas,Pesos_j)...
-%              Rede_J(x,Amostra,in_validation,Entradas_Estimadas,Pesos_j);
 
     xc = [0.5 0.5];
     Rede_Comp_P = @(x,Amostra,in_validation,Entradas_Estimadas,Pesos_r,Pesos_j)...
              Rede_C(x,Amostra,in_validation,Entradas_Estimadas,Pesos_r,Pesos_j);
-         
-    load('PESOS.mat');
-    Pesos_r=Pesos;
-    load('PESOS_j.mat');
-    Pesos_j=Pesos;
+
+    load('PESOS.mat');Pesos_r=Pesos;load('PESOS_j.mat');Pesos_j=Pesos;
     load('data_LDMOS.mat','in_validation');
-    options = optimset('Display','off','Algorithm','levenberg-marquardt');
+    
+    options = optimoptions('fsolve','Display','off','Algorithm','levenberg-marquardt',...
+        'FunctionTolerance',1e-12,'StepTolerance',1e-12,'CheckGradients',true);
+    
     t = 0;
     for Amostra = 1:8499
         tic
-%         Rede_Real = @(x) Rede_Real_P(x,Amostra,in_validation,Entradas_Estimadas,Pesos_r);
-%         Rede_Imag = @(x) Rede_Imag_P(x,Amostra,in_validation,Entradas_Estimadas,Pesos_j);
-%         [x_r,Minimizar(1)] = fsolve(Rede_Real,xr,options);
-%         [x_j,Minimizar(2)] = fsolve(Rede_Imag,xj,options);
-%         xr=x_r;xj=x_j;x_t=x_r+1i*x_j;
-
         Rede_Comp = @(x) Rede_Comp_P(x,Amostra,in_validation,Entradas_Estimadas,Pesos_r,Pesos_j);
-        [x_c,Minimizar] = fsolve(Rede_Comp,xc,options);
-        x_t=x_c(1)+1i*x_c(2);xc=x_c;
+        [x_c,res] = fsolve(Rede_Comp,xc,options);
         
+        while(res(1)>0.001 || res(2)>0.001)
+            [x_c,res] = fsolve(Rede_Comp,rand(1,2),options);
+        end
+        
+        x_t=x_c(1)+1i*x_c(2);
+        xc=x_c;
         Entradas_Estimadas(Amostra+M) = x_t;
-%         disp(['Minimizar Real: ',num2str(abs(Minimizar(1))),...
-%            10,'Minimizar Imag: ',num2str(abs(Minimizar(2)))]);
-        t = t+toc;
+        t = t + toc;
     end
     t = t/8499;
-    disp(t);
     save('Entradas_Estimadas.mat','Entradas_Estimadas','-v6');
-    Comparar;
     Validar;
+    [Erro,Vetor_Erro] = Comparar;
     Plotagens;
-    delete('Saida.mat','complex.mat','Entradas_Estimadas.mat','Dados.mat')
+   delete('Entradas_Estimadas.mat','Saida_complexa.mat','Dados.mat')
 end

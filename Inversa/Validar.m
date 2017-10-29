@@ -1,23 +1,17 @@
 function [] = Validar
     load('data_LDMOS.mat','in_validation','out_validation');
-    M=2;
-    Num_Neuronios=8;
+    global M
     %%%
     %Ajuste dos Dados
-    Dados_Saida = in_validation(M+1:end).*exp(-1i*wrapTo2Pi(angle(out_validation(M+1:end))));
+    Dados_Saida = in_validation(M+1:end).*exp(-1i*wrapTo2Pi(angle(out_validation(M+1:end)))); %#ok<COLND,NASGU>
     %ajustar os dados de saida
-    Dados_Entrada = Ajuste(out_validation,M);
+    Dados_Entrada = Ajuste(out_validation,M); %#ok<NASGU>
     %%%
+
+    save('Dados.mat','Dados_Entrada','Dados_Saida','-v6');
+    clear in_validation out_validation Dados_Saida Dados_Entrada
     
     %%%
-    %Valores a serem usados
-    Num_Saidas = size(Dados_Saida,2);
-    Num_Entradas = size(Dados_Entrada,2);
-
-    save('Dados.mat','Num_Entradas','Num_Saidas','Num_Neuronios','Dados_Entrada','Dados_Saida','M','-v6');
-    clear
-    %%%
-    M=2;
     load('Entradas_Estimadas.mat');    
     Dados_Entrada = Ajuste(Entradas_Estimadas,M);
     
@@ -27,18 +21,7 @@ function [] = Validar
     load('PESOS_j.mat');   
     Saida_j = Aplicar_Rede(Dados_Entrada,Pesos);
     
-    load('data_LDMOS.mat','in_validation');
-    Saida_complexa = (Saida_r+1i*Saida_j);
-    save('Saida.mat','Saida_complexa');
-    
-    complex = false;
-    save('complex.mat','complex')
-    Erro_r = Calculo_MSE(real(Saida_complexa));
-    
-    complex = true;
-    save('complex.mat','complex')
-    Erro_j = Calculo_MSE(imag(Saida_complexa));
-    
-    disp(['Erro: ',num2str(sum(abs(Erro_r)),'%e'),10,'Erro_j: ',num2str(sum(abs(Erro_j)),'%e')])
+    Saida_complexa = (Saida_r+1i*Saida_j); %#ok<NASGU>
+    save('Saida_complexa.mat','Saida_complexa');
 end
 

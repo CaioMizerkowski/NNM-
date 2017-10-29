@@ -10,10 +10,10 @@ function [Minimizar] = Rede_C(x,Amostra,in_validation,Entradas_Estimadas,Pesos_r
     Dados_Saida = in_validation(M+1:end)...
         .*exp(-1i*angle(out_validation(M+1:end)));
     
-    Saida = Aplicar_Rede(Dados_Entrada,Pesos_r);
-    Minimizar(1) = Saida - real(Dados_Saida);
+    Saida_r = Aplicar_Rede(Dados_Entrada,Pesos_r);
+    Minimizar(1) = (Saida_r - real(Dados_Saida));
     
-    Saida = Aplicar_Rede(Dados_Entrada,Pesos_j);
-    Minimizar(2) = Saida - imag(Dados_Saida);
+    Saida_j = Aplicar_Rede(Dados_Entrada,Pesos_j);
+    Minimizar(2) = (Saida_j - imag(Dados_Saida));
 end
 

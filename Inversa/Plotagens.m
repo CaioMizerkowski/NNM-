@@ -1,14 +1,15 @@
-function[] = Plotagens()
+function[] = Plotagens
     close all
     var1=500;
     var2=0;
     passo1=1;
+    global M;
     
-    load('Dados.mat','Dados_Entrada','Dados_Saida','M');
+    load('Dados.mat','Dados_Entrada','Dados_Saida');
     load('Entradas_Estimadas.mat');
-    load('Saida');
+    load('Saida_complexa.mat');
     load('data_LDMOS.mat','in_validation','out_validation');
-    Fase = angle(in_validation(M+1:end));
+    Fase = angle(in_validation(M+1:end)); %#ok<COLND>
     
 for h=1
     figure('units','pixels','position',[0 0 1920 1080],'ToolBar','none','MenuBar','none')
@@ -48,19 +49,20 @@ for h=1
 %         print('Figura1_inv','-depsc');
 end
 
+%%Suprimido
 for h=1
     figure('units','pixels','position',[0 0 1920 1080],'ToolBar','none','MenuBar','none')
-    %Valores 
+    %Valores
         subplot(2,2,1)
         real_sai = real(Dados_Saida);
-        abs_in = Dados_Entrada(:,1);
+        abs_in = Dados_Entrada(:,1); %#ok<NODEF>
         real_out = real(Saida_complexa);
-        plot(abs_in(1:passo1:end),real_out(1:passo1:end),'ok','MarkerFaceColor', 'k');
+        plot(abs_in(1:passo1:end),real_out(1:passo1:end),'ok','MarkerFaceColor','k');
         hold on
         plot(abs_in(1:passo1:end),real_sai(1:passo1:end),'xr');
         
         legend('Estimado','Original','Location','northwest')
-        title('')
+        title('Input pela Amplitude')
         ylabel('R_{s}')
         xlabel('A_{x}')
         grid
@@ -70,8 +72,7 @@ for h=1
         imag_sai = imag(Dados_Saida);
         abs_in = Dados_Entrada(:,1);
         imag_out = imag(Saida_complexa);
-        plot(abs_in(1:passo1:end),imag_out(1:passo1:end),'ok','MarkerFaceColor', 'k');
-        hold on
+        plot(abs_in(1:passo1:end),imag_out(1:passo1:end),'ok','MarkerFaceColor','k'); hold on
         plot(abs_in(1:passo1:end),imag_sai(1:passo1:end),'xr');
 
         legend('Estimado','Original','Location','northwest')
@@ -85,7 +86,7 @@ for h=1
         phas_sai = angle(Dados_Saida);
         abs_in = Dados_Entrada(:,1);
         phas_out = angle(Saida_complexa);
-        plot(abs_in(1:passo1:end),phas_out(1:passo1:end),'ok','MarkerFaceColor', 'k');
+        plot(abs_in(1:passo1:end),phas_out(1:passo1:end),'ok','MarkerFaceColor','k');
         hold on
         plot(abs_in(1:passo1:end),phas_sai(1:passo1:end),'xr');
         
@@ -100,7 +101,7 @@ for h=1
         abs_sai = abs(Dados_Saida);
         abs_in = Dados_Entrada(:,1);
         abs_out = abs(Saida_complexa);
-        plot(abs_in(1:passo1:end),abs_out(1:passo1:end),'ok','MarkerFaceColor', 'k');
+        plot(abs_in(1:passo1:end),abs_out(1:passo1:end),'ok','MarkerFaceColor','k');
         hold on
         plot(abs_in(1:passo1:end),abs_sai(1:passo1:end),'xr');
         
@@ -119,7 +120,7 @@ for h=1
         origi_abs = abs(out_validation);
         plot(estim_abs(1:passo1:end),origi_abs(1:passo1:end),'.k');
         
-        title('Valor Abs')
+        title('Valor da Amplitude')
         xlabel('Estimado')
         ylabel('Original')
         grid
@@ -139,35 +140,21 @@ for h=1
         origi_imag = imag(out_validation);
         plot(estim_imag(1:passo1:end),origi_imag(1:passo1:end),'.k');
         
-        title('Valor Imag')
+        title('Valor Imaginario')
         xlabel('Estimado')
         ylabel('Original')
         grid
         
         subplot(2,2,4)
-        estim_phase = angle(Entradas_Estimadas);
-        origi_phase = angle(out_validation);
-        plot(estim_phase(1:passo1:end),origi_phase(1:passo1:end),'.k');
-        
-        title('Valor Fase')
-        xlabel('Estimado')
-        ylabel('Original')
-        grid
-%         print('Figura3_inv','-depsc');
-end
-
-for h=1
-%Diferença de fase entre entrada e saída da cascada NNInversa -> NN, em função da amplitude de entrada
-    %figure('units','pixels','position',[0 0 1920 1080],'ToolBar','none','MenuBar','none')
-        close all
-        dif_fase = wrapTo2Pi(angle(Entradas_Estimadas(3:end))) - wrapTo2Pi(angle(Saida_complexa));
+        dif_fase = angle(Dados_Saida) - angle(Saida_complexa);
         plot(abs_in(1:passo1:end),dif_fase(1:passo1:end),'.k');
         
-        title('Diferença de Fase por Amplitude da Entrada')
+        title('Diferença de Fase')
         xlabel('Amplitude de Entrada')
         ylabel('Diferença de Fase')
         grid
+%         print('Figura2_inv','-depsc');
 end
 
-end
 
+end
