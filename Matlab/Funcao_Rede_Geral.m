@@ -43,6 +43,11 @@ function [] = Funcao_Rede_Geral
     %%%
     
     %%%
+    %
+    Erro_NMSE;
+    %%%
+    
+    %%%
     %Usando os Pesos para reconstruir os valores
     delete('Dados.mat','Saida.mat','complex.mat','k.mat');
     %%%
