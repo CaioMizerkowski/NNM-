@@ -1,5 +1,0 @@
-Perceptron du Mal:
-Testes envolvendo o uso de um único perceptron de modo visual
-
-Matlab:
-Nome horrivel, muito ruim. Mas é a rede neural, eu presumo.

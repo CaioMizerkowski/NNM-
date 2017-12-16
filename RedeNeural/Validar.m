@@ -4,7 +4,8 @@ function [] = Validar
     
     %%%
     %Ajuste dos Dados
-    Dados_Saida = Dados_Validation.in_validation(M+1:end).*exp(-1i*wrapTo2Pi(angle(Dados_Validation.out_validation(M+1:end))));
+    Dados_Saida = Dados_Validation.in_validation(M+1:end)...
+        .*exp(-1i*wrapTo2Pi(angle(Dados_Validation.out_validation(M+1:end))));
     %ajustar os dados de saida
     Dados_Entrada = Ajuste(Dados_Validation.out_validation,M);
     %%%
