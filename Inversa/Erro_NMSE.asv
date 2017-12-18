@@ -1,0 +1,10 @@
+function [NMSE] = Erro_NMSE()
+    load('Entradas_Estimadas.mat','Entradas_Estimadas')
+    load('')
+    
+    saida_referencia = ;
+    saida_teste = E;
+    
+    NMSE = (sum(abs(saida_teste-saida_referencia)^2))/(sum(abs(saida_referencia)^2));
+end
+
