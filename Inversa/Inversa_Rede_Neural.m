@@ -34,8 +34,7 @@ function [Erro,Vetor_Erro] = Inversa_Rede_Neural
     t = t/8499;
     save('Entradas_Estimadas.mat','Entradas_Estimadas','-v6');
     Validar;
-    NMSE = Erro_NMSE();
-    disp([num2str(NMSE),])
+    Erro_NMSE;
     
     %[Erro,Vetor_Erro] = Comparar;
     %Plotagens;

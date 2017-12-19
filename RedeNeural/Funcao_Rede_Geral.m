@@ -39,9 +39,14 @@ function [] = Funcao_Rede_Geral
     
     %%%
     %Plotagens para verificação
-    Plotagens;
+    %Plotagens;
     %%%
 
+    %%%
+    %Calculo do NMSE
+    Erro_NMSE;
+    %%%
+    
     %%%
     %Usando os Pesos para reconstruir os valores
     delete('Dados.mat','Saida.mat','complex.mat','k.mat');

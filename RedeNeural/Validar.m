@@ -30,13 +30,13 @@ function [] = Validar
     Saida_complexa = (Saida_r+1i*Saida_j);
     save('Saida.mat','Saida_complexa');
     
-    complex = false;
-    save('complex.mat','complex')
-    Erro_r = Calculo_MSE(real(Saida_complexa));
-    
-    complex = true;
-    save('complex.mat','complex')
-    Erro_j = Calculo_MSE(imag(Saida_complexa));
-    
-    disp(['Erro: ',num2str(sum(abs(Erro_r)),'%e'),10,'Erro_j: ',num2str(sum(abs(Erro_j)),'%e')])
+%     complex = false;
+%     save('complex.mat','complex')
+%     Erro_r = Calculo_MSE(real(Saida_complexa));
+%     
+%     complex = true;
+%     save('complex.mat','complex')
+%     Erro_j = Calculo_MSE(imag(Saida_complexa));
+%     
+%     disp(['Erro: ',num2str(sum(abs(Erro_r)),'%e'),10,'Erro_j: ',num2str(sum(abs(Erro_j)),'%e')])
 end
