@@ -33,18 +33,18 @@ function [] = Funcao_Rede_Geral
     %%%
     
     %%%
+    %Tirar NMSE do treinamento
+    Validar('extraction');
+    %
+    
+    %%%
     %Etapa de Validação
-    Validar;
+    Validar('validation');
     %%%
     
     %%%
     %Plotagens para verificação
     %Plotagens;
-    %%%
-
-    %%%
-    %Calculo do NMSE
-    Erro_NMSE;
     %%%
     
     %%%

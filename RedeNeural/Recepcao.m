@@ -1,8 +1,13 @@
 function [] = Recepcao(pesos_str)
     %%%
-    %Função de ativação: 2./(1+exp(-2x))-1;
-    %Diff ~~ 1 - (2./(1+exp(-2x))-1)^2
-    %Aproximação de Tanh, mais rápida de ser calculada;
+    %Função que recebe os dados para ser realizado o treinamento da parte
+    %real e da parte imaginaria da função. Recebe uma string que define os
+    %pesos e bias a serem usados e carrega um valor internamente para
+    %definir se os dados a serem usados para o treinamento são reais ou
+    %imaginarios.
+    %Também chega se os pessos funciona e se a função de treinamento não da
+    %nenhum erro.
+    
     %%%
     try
         Pesos = load(pesos_str);
@@ -12,8 +17,6 @@ function [] = Recepcao(pesos_str)
     end
     
         num = 1e4;
-%     k = 1;
-%     save('k.mat','k');
 try
     options = optimoptions(@lsqnonlin,'Algorithm','levenberg-marquardt'...
         ,'MaxIterations',num,'MaxFunctionEvaluations',num,...

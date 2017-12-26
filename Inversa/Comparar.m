@@ -1,9 +1,9 @@
-function [Erro,Vetor_Erro] = Comparar
+function [Erro,Vetor_Erro] = Comparar(val_or_ext)
     load('Entradas_Estimadas.mat')
-    load('data_LDMOS.mat','out_validation')
-    
-    out_validation = out_validation(1:length(Entradas_Estimadas));
-    Vetor_Erro = Entradas_Estimadas - out_validation;
+    load('data_LDMOS.mat',['out_',val_or_ext])
+    eval(['out = out_',val_or_ext]);
+    out = out(1:length(Entradas_Estimadas));
+    Vetor_Erro = Entradas_Estimadas - out;
     Erro = abs(Vetor_Erro);
     a=1;b =1;c=1;d=1;e=1;
     for k=1:length(Entradas_Estimadas)

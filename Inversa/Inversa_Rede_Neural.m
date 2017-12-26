@@ -1,25 +1,28 @@
-function [Erro,Vetor_Erro] = Inversa_Rede_Neural
+function [] = Inversa_Rede_Neural(val_or_ext)
     global M;
     M=2;
-    load('data_LDMOS.mat','out_validation');
-    Entradas_Estimadas = out_validation(1:M);
+    load('data_LDMOS.mat',['out_',val_or_ext]);
+    eval(['out = out_',val_or_ext,';']);
+    Entradas_Estimadas = out(1:M);
     save('Entradas_Estimadas.mat','Entradas_Estimadas','-v6');
-    clear out_validation
+    clear ['out_',val_or_ext]
 
     xc = [0.5 0.5];
-    Rede_Comp_P = @(x,Amostra,in_validation,Entradas_Estimadas,Pesos_r,Pesos_j)...
-             Rede_C(x,Amostra,in_validation,Entradas_Estimadas,Pesos_r,Pesos_j);
+    Rede_Comp_P = @(x,Amostra,in,Entradas_Estimadas,Pesos_r,Pesos_j)...
+             Rede_C(x,Amostra,in,Entradas_Estimadas,Pesos_r,Pesos_j);
 
     load('PESOS.mat');Pesos_r=Pesos;load('PESOS_j.mat');Pesos_j=Pesos;
-    load('data_LDMOS.mat','in_validation');
+    load('data_LDMOS.mat',['in_',val_or_ext]);
+    eval(['in = in_',val_or_ext,';']);
+    clear ['in_',val_or_ext]
     
     options = optimoptions('fsolve','Display','off','Algorithm','levenberg-marquardt',...
         'FunctionTolerance',1e-12,'StepTolerance',1e-12,'CheckGradients',true);
     
     t = 0;
-    for Amostra = 1:8499
+    for Amostra = 1:length(out)-M
         tic
-        Rede_Comp = @(x) Rede_Comp_P(x,Amostra,in_validation,Entradas_Estimadas,Pesos_r,Pesos_j);
+        Rede_Comp = @(x) Rede_Comp_P(x,Amostra,in,Entradas_Estimadas,Pesos_r,Pesos_j);
         [x_c,res] = fsolve(Rede_Comp,xc,options);
         
         while(res(1)>0.001 || res(2)>0.001)
@@ -31,12 +34,12 @@ function [Erro,Vetor_Erro] = Inversa_Rede_Neural
         Entradas_Estimadas(Amostra+M) = x_t;
         t = t + toc;
     end
-    t = t/8499;
+    t = t/(length(out)-M);
     save('Entradas_Estimadas.mat','Entradas_Estimadas','-v6');
     Validar;
-    Erro_NMSE;
+    NMSE(out,Entradas_Estimadas);
     
-    %[Erro,Vetor_Erro] = Comparar;
+    %[Erro,Vetor_Erro] = Comparar(val_or_ext);
     %Plotagens;
     
    delete('Entradas_Estimadas.mat','Saida_complexa.mat','Dados.mat')

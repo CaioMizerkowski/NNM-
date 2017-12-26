@@ -2,7 +2,8 @@ Perceptron du Mal:
 #Testes envolvendo o uso de um único perceptron de modo visual
 
 RedeNeural:
-#É a rede neural, eu presumo.
+#É a rede neural.
+#Inversa do AP.
 
 #Salvando Infos
 -Ajusta os dados complexos para a arquitetura da rede.
@@ -35,7 +36,8 @@ RedeNeural:
 -Plota e salva.
 
 Inversa:
-#Tudo leva a crer que é a inversa, com muitas funções anonimas.
+#Inversa da RedeNeural.
+#Simula um AP.
 -As entradas_estimadas são o out.
 -Carrega os pesos já calculados.
 -Calcula amostra por amostra:
