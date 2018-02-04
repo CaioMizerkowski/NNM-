@@ -44,7 +44,7 @@ function [] = Funcao_Rede_Geral
     
     %%%
     %Plotagens para verificação
-    %Plotagens;
+    Plotagens;
     %%%
     
     %%%

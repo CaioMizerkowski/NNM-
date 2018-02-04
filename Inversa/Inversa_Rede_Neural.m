@@ -21,7 +21,7 @@ function [] = Inversa_Rede_Neural(val_or_ext)
     
     t = 0;
     for Amostra = 1:length(out)-M
-        tic
+%         tic
         Rede_Comp = @(x) Rede_Comp_P(x,Amostra,in,Entradas_Estimadas,Pesos_r,Pesos_j);
         [x_c,res] = fsolve(Rede_Comp,xc,options);
         
@@ -32,15 +32,15 @@ function [] = Inversa_Rede_Neural(val_or_ext)
         x_t=x_c(1)+1i*x_c(2);
         xc=x_c;
         Entradas_Estimadas(Amostra+M) = x_t;
-        t = t + toc;
+%         t = t + toc;
     end
-    t = t/(length(out)-M);
+%     t = t/(length(out)-M);
     save('Entradas_Estimadas.mat','Entradas_Estimadas','-v6');
-    Validar;
     NMSE(out,Entradas_Estimadas);
     
     %[Erro,Vetor_Erro] = Comparar(val_or_ext);
-    %Plotagens;
+    Validar(val_or_ext);
+    Plotagens(val_or_ext);
     
    delete('Entradas_Estimadas.mat','Saida_complexa.mat','Dados.mat')
 end

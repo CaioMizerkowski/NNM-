@@ -1,4 +1,4 @@
-function[] = Plotagens
+function[] = Plotagens(val_or_ext)
     close all
     var1=500;
     var2=0;
@@ -6,10 +6,16 @@ function[] = Plotagens
     global M;
     
     load('Dados.mat','Dados_Entrada','Dados_Saida');
+    %Entradas conseguidas por meio da inversa da rede neural
     load('Entradas_Estimadas.mat');
+    %Resultado de aplicar a entrada estimada na rede neural
     load('Saida_complexa.mat');
-    load('data_LDMOS.mat','in_validation','out_validation');
-    Fase = angle(in_validation(M+1:end)); %#ok<COLND>
+    load('data_LDMOS.mat',['in_',val_or_ext],['out_',val_or_ext]);
+    
+    eval(['in = in_',val_or_ext,';']);
+    eval(['out = out_',val_or_ext,';']);
+    
+    Fase = angle(in(M+1:end)); %#ok<COLND>
     
 for h=1
     figure('units','pixels','position',[0 0 1920 1080],'ToolBar','none','MenuBar','none')
@@ -117,7 +123,7 @@ for h=1
     figure('units','pixels','position',[0 0 1920 1080],'ToolBar','none','MenuBar','none')
         subplot(2,2,1)
         estim_abs = abs(Entradas_Estimadas);
-        origi_abs = abs(out_validation);
+        origi_abs = abs(out);
         plot(estim_abs(1:passo1:end),origi_abs(1:passo1:end),'.k');
         
         title('Valor da Amplitude')
@@ -127,7 +133,7 @@ for h=1
 
         subplot(2,2,2)
         estim_real = real(Entradas_Estimadas);
-        origi_real = real(out_validation);
+        origi_real = real(out);
         plot(estim_real(1:passo1:end),origi_real(1:passo1:end),'.k');
         
         title('Valor Real')
@@ -137,7 +143,7 @@ for h=1
         
         subplot(2,2,3)
         estim_imag = imag(Entradas_Estimadas);
-        origi_imag = imag(out_validation);
+        origi_imag = imag(out);
         plot(estim_imag(1:passo1:end),origi_imag(1:passo1:end),'.k');
         
         title('Valor Imaginario')
