@@ -1,5 +1,5 @@
 function [Minimizar] = Rede_C(x,Amostra,in_validation,Entradas_Estimadas,Pesos_r,Pesos_j)
-    M=2;
+    global M;
     x = x(1)+1i*x(2);
     in_validation = in_validation(Amostra:Amostra+M);
     out_validation = Entradas_Estimadas(Amostra:Amostra+M-1);

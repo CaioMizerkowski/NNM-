@@ -29,9 +29,9 @@ function [] = Validar(val_or_ext)
     load('PESOS_j.mat');   
     Saida_j = Aplicar_Rede(Dados_Entrada,Pesos);
     
-    Saida_complexa = (Saida_r+1i*Saida_j); %#ok<NASGU>
+    Saida_complexa = (Saida_r+1i*Saida_j);
     save('Saida_complexa.mat','Saida_complexa');
-    disp(['cascata'])
+    disp('not - cascata');
     NMSE(Saida_complexa,Dados_Saida);
 end
 

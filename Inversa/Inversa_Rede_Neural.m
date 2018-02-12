@@ -17,16 +17,21 @@ function [] = Inversa_Rede_Neural(val_or_ext)
     clear ['in_',val_or_ext]
     
     options = optimoptions('fsolve','Display','off','Algorithm','levenberg-marquardt',...
-        'FunctionTolerance',1e-12,'StepTolerance',1e-12,'CheckGradients',true);
+        'FunctionTolerance',1e-12,'StepTolerance',1e-12);%
     
-    t = 0;
+    t = 1;
     for Amostra = 1:length(out)-M
 %         tic
         Rede_Comp = @(x) Rede_Comp_P(x,Amostra,in,Entradas_Estimadas,Pesos_r,Pesos_j);
         [x_c,res] = fsolve(Rede_Comp,xc,options);
-        
+        p = 0;
         while(res(1)>0.001 || res(2)>0.001)
-            [x_c,res] = fsolve(Rede_Comp,rand(1,2),options);
+            x_t = x_t*exp(0.7i);
+            [x_c,res] = fsolve(Rede_Comp,[real(x_t),imag(x_t)],options);
+            
+            disp([num2str(t),' e ',num2str(p),' e ', num2str(Amostra)]);
+            t = t+1;
+            p = p+1;
         end
         
         x_t=x_c(1)+1i*x_c(2);
@@ -36,6 +41,7 @@ function [] = Inversa_Rede_Neural(val_or_ext)
     end
 %     t = t/(length(out)-M);
     save('Entradas_Estimadas.mat','Entradas_Estimadas','-v6');
+    disp('cascata')
     NMSE(out,Entradas_Estimadas);
     
     %[Erro,Vetor_Erro] = Comparar(val_or_ext);
