@@ -11,5 +11,5 @@ function [Saida] = Aplicar_Rede(Entrada,Vetor_Pesos)
     %[C,N]=[C,E+1]*[E+1,N]
     [Saida] = Multi_Matriz(Pesos1,Entrada,true);
     %[C,S]=[C,N+1]*[N+1,S]
-    [Saida] = Multi_Matriz(Pesos2,Saida,false);
+    [Saida] = Multi_Matriz(Pesos2,Saida,true);
 end
