@@ -1,0 +1,174 @@
+for n = 8:-1:1
+Funcao_Rede_Geral(n)
+end
+8
+Pesos invalidos!
+{Not enough input arguments.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Funcao_Rede_Geral', 'C:\Users\marte\Desktop\Neuro\NNM\RedeNeural\Funcao_Rede_Geral.m', 4)" style="font-weight:bold">Funcao_Rede_Geral</a> (<a href="matlab: opentoline('C:\Users\marte\Desktop\Neuro\NNM\RedeNeural\Funcao_Rede_Geral.m',4,0)">line 4</a>)
+    Num_Neuronios = n;
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Funcao_Rede_Geral', 'C:\Users\marte\Desktop\Neuro\NNM\RedeNeural\Funcao_Rede_Geral.m', 24)" style="font-weight:bold">Funcao_Rede_Geral</a> (<a href="matlab: opentoline('C:\Users\marte\Desktop\Neuro\NNM\RedeNeural\Funcao_Rede_Geral.m',24,0)">line 24</a>)
+        Funcao_Rede_Geral;
+} 
+Funcao_Rede_Geral(6)
+6
+<a href="matlab: opentoline('C:\Users\marte\Desktop\Neuro\NNM\RedeNeural\Aplicar_Rede.m',15,1)">15  </a>end
+if system_dependent('IsDebugMode')==1, dbquit; end
+for n = 8:-1:1
+Funcao_Rede_Geral(n)
+end
+8
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'solver_stopped_premature','CSHelpWindow');">Solver stopped prematurely</a>.
+
+lsqnonlin stopped because it exceeded the function evaluation limit,
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'max_fun_evals','CSHelpWindow');">options.MaxFunctionEvaluations</a> = 10000 (the selected value).
+
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'solver_stopped_premature','CSHelpWindow');">Solver stopped prematurely</a>.
+
+lsqnonlin stopped because it exceeded the function evaluation limit,
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'max_fun_evals','CSHelpWindow');">options.MaxFunctionEvaluations</a> = 10000 (the selected value).
+
+NMSE: -39.6055
+NMSE: -39.6446
+7
+Pesos invalidos!
+7
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'solver_stopped_premature','CSHelpWindow');">Solver stopped prematurely</a>.
+
+lsqnonlin stopped because it exceeded the function evaluation limit,
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'max_fun_evals','CSHelpWindow');">options.MaxFunctionEvaluations</a> = 10000 (the selected value).
+
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'solver_stopped_premature','CSHelpWindow');">Solver stopped prematurely</a>.
+
+lsqnonlin stopped because it exceeded the function evaluation limit,
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'max_fun_evals','CSHelpWindow');">options.MaxFunctionEvaluations</a> = 10000 (the selected value).
+
+NMSE: -39.7295
+NMSE: -39.7549
+6
+Pesos invalidos!
+6
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'solver_stopped_premature','CSHelpWindow');">Solver stopped prematurely</a>.
+
+lsqnonlin stopped because it exceeded the function evaluation limit,
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'max_fun_evals','CSHelpWindow');">options.MaxFunctionEvaluations</a> = 10000 (the selected value).
+
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'solver_stopped_premature','CSHelpWindow');">Solver stopped prematurely</a>.
+
+lsqnonlin stopped because it exceeded the function evaluation limit,
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'max_fun_evals','CSHelpWindow');">options.MaxFunctionEvaluations</a> = 10000 (the selected value).
+
+NMSE: -39.3889
+NMSE: -39.4627
+5
+Pesos invalidos!
+5
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'solver_stopped_premature','CSHelpWindow');">Solver stopped prematurely</a>.
+
+lsqnonlin stopped because it exceeded the function evaluation limit,
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'max_fun_evals','CSHelpWindow');">options.MaxFunctionEvaluations</a> = 10000 (the selected value).
+
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'solver_stopped_premature','CSHelpWindow');">Solver stopped prematurely</a>.
+
+lsqnonlin stopped because it exceeded the function evaluation limit,
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'max_fun_evals','CSHelpWindow');">options.MaxFunctionEvaluations</a> = 10000 (the selected value).
+
+NMSE: -39.6306
+NMSE: -39.6667
+4
+Pesos invalidos!
+4
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'solver_stopped_premature','CSHelpWindow');">Solver stopped prematurely</a>.
+
+lsqnonlin stopped because it exceeded the function evaluation limit,
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'max_fun_evals','CSHelpWindow');">options.MaxFunctionEvaluations</a> = 10000 (the selected value).
+
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'solver_stopped_premature','CSHelpWindow');">Solver stopped prematurely</a>.
+
+lsqnonlin stopped because it exceeded the function evaluation limit,
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'max_fun_evals','CSHelpWindow');">options.MaxFunctionEvaluations</a> = 10000 (the selected value).
+
+NMSE: -39.494
+NMSE: -39.4888
+3
+Pesos invalidos!
+3
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'solver_stopped_premature','CSHelpWindow');">Solver stopped prematurely</a>.
+
+lsqnonlin stopped because it exceeded the function evaluation limit,
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'max_fun_evals','CSHelpWindow');">options.MaxFunctionEvaluations</a> = 10000 (the selected value).
+
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'local_min_possible_lsq','CSHelpWindow');">Local minimum possible</a>.
+
+lsqnonlin stopped because the final change in the sum of squares relative to 
+its initial value is less than the selected value of the <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'function_tolerance_lsq','CSHelpWindow');">function tolerance</a>.
+
+<<a href = "matlab: createExitMsg('levenbergMarquardt',3.000000e+00,true,true,'lsqnonlin',9.810273e-13,'selected',1.000000e-12,0.000000e+00,'',0.000000e+00,0.000000e+00,'',0.000000e+00);">stopping criteria details</a>>
+
+NMSE: -39.272
+NMSE: -39.3792
+2
+Pesos invalidos!
+2
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'local_min_possible_lsq','CSHelpWindow');">Local minimum possible</a>.
+
+lsqnonlin stopped because the final change in the sum of squares relative to 
+its initial value is less than the selected value of the <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'function_tolerance_lsq','CSHelpWindow');">function tolerance</a>.
+
+<<a href = "matlab: createExitMsg('levenbergMarquardt',3.000000e+00,true,true,'lsqnonlin',3.156142e-14,'selected',1.000000e-12,0.000000e+00,'',0.000000e+00,0.000000e+00,'',0.000000e+00);">stopping criteria details</a>>
+
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'local_min_possible_lsq','CSHelpWindow');">Local minimum possible</a>.
+
+lsqnonlin stopped because the final change in the sum of squares relative to 
+its initial value is less than the selected value of the <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'function_tolerance_lsq','CSHelpWindow');">function tolerance</a>.
+
+<<a href = "matlab: createExitMsg('levenbergMarquardt',3.000000e+00,true,true,'lsqnonlin',1.862737e-13,'selected',1.000000e-12,0.000000e+00,'',0.000000e+00,0.000000e+00,'',0.000000e+00);">stopping criteria details</a>>
+
+NMSE: -38.1478
+NMSE: -38.1255
+1
+Pesos invalidos!
+1
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'local_min_possible_lsq','CSHelpWindow');">Local minimum possible</a>.
+
+lsqnonlin stopped because the relative <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'norm_current_step','CSHelpWindow');">size of the current step</a> is less than
+the selected value of the <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'step_size_tol','CSHelpWindow');">step size tolerance</a>.
+
+<<a href = "matlab: createExitMsg('levenbergMarquardt',4.000000e+00,true,true,'lsqnonlin',9.451767e-13,'selected',1.000000e-12,0.000000e+00,'',0.000000e+00,0.000000e+00,'',0.000000e+00);">stopping criteria details</a>>
+
+
+<a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'local_min_possible_lsq','CSHelpWindow');">Local minimum possible</a>.
+
+lsqnonlin stopped because the final change in the sum of squares relative to 
+its initial value is less than the selected value of the <a href = "matlab: helpview([docroot '/toolbox/optim/msg_csh/optim_msg_csh.map'],'function_tolerance_lsq','CSHelpWindow');">function tolerance</a>.
+
+<<a href = "matlab: createExitMsg('levenbergMarquardt',3.000000e+00,true,true,'lsqnonlin',4.110764e-14,'selected',1.000000e-12,0.000000e+00,'',0.000000e+00,0.000000e+00,'',0.000000e+00);">stopping criteria details</a>>
+
+NMSE: -27.9892
+NMSE: -28.0619
+Funcao_Rede_Geral
+{Not enough input arguments.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Funcao_Rede_Geral', 'C:\Users\marte\Desktop\Neuro\NNM\RedeNeural\Funcao_Rede_Geral.m', 4)" style="font-weight:bold">Funcao_Rede_Geral</a> (<a href="matlab: opentoline('C:\Users\marte\Desktop\Neuro\NNM\RedeNeural\Funcao_Rede_Geral.m',4,0)">line 4</a>)
+    Num_Neuronios = n;
+} 
+Funcao_Rede_Geral(1)
+1
+<a href="matlab: opentoline('C:\Users\marte\Desktop\Neuro\NNM\RedeNeural\Multi_Matriz.m',4,1)">4   </a>    if ativar
+if system_dependent('IsDebugMode')==1, dbquit; end

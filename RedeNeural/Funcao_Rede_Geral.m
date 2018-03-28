@@ -1,8 +1,12 @@
-function [] = Funcao_Rede_Geral
+function [] = Funcao_Rede_Geral(n)
+
+    global Num_Neuronios;
+    Num_Neuronios = n;
+    disp([num2str(Num_Neuronios)]);
     %%%
     Salvando_Infos_Uso_Futuro;
     %%%
-
+    
     %%%
     %Aplicando a rede pros Reais
     pesos = 'PESOS.mat';
@@ -17,7 +21,7 @@ function [] = Funcao_Rede_Geral
     %Verificando erros
     if ~exist('PESOS.mat')
         disp('Pesos invalidos!')
-        Funcao_Rede_Geral;
+        Funcao_Rede_Geral(n);
         return;
     end
     %%%
@@ -44,11 +48,13 @@ function [] = Funcao_Rede_Geral
     
     %%%
     %Plotagens para verificação
-    Plotagens;
+    %Plotagens;
     %%%
+    
+    Salvamento();
     
     %%%
     %Usando os Pesos para reconstruir os valores
-    %delete('Dados.mat','Saida.mat','complex.mat','k.mat');
+    delete('Dados.mat','Saida.mat','complex.mat','k.mat');
     %%%
 end
